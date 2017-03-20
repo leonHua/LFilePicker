@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.LFilePickerActivity">
+
+
+    <LinearLayout
+        android:id="@+id/layout_path"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#dddddd"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_path"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:gravity="left"
+            android:maxLines="1"
+            android:padding="6dp"
+            android:text="路径：/storeage/0"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/back_bg"
+            android:clickable="true"
+            android:drawableLeft="@mipmap/back"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="上一级"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_addbook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_bg"
+        android:text="放入书架"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+    <com.leon.lfilepickerlibrary.widget.EmptyRecyclerView
+        android:id="@+id/recylerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_addbook"
+        android:layout_below="@id/layout_path"/>
+
+    <include
+        android:id="@+id/empty_view"
+        layout="@layout/emptyview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_path"/>
+
+</RelativeLayout>

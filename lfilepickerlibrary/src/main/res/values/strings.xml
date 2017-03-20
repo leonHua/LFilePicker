@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LFilePickerLibrary</string>
+    <string name="NotFoundBooks">请选择导入的图书</string>
+</resources>

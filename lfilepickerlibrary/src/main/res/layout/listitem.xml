@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout_item_root"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_bg_selector"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+    <ImageView
+        android:id="@+id/iv_type"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_centerVertical="true"
+        android:background="@mipmap/file"/>
+
+    <CheckBox
+        android:id="@+id/cb_choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/cb_choose"
+        android:layout_toRightOf="@id/iv_type"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/item_text_name"
+            android:text="鬼吹灯"/>
+
+        <TextView
+            android:id="@+id/tv_detail"
+            style="@style/item_text_detail"
+            android:text="类型：txt  大小：1024KB"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/layout_info"
+        android:layout_marginTop="6dp"
+        android:background="@color/lightgray"/>
+
+</RelativeLayout>
