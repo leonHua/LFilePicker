@@ -12,6 +12,7 @@ public class ParamEntity implements Serializable{
     private String backgroundColor;
     private int backIcon;
     private boolean mutilyMode;
+    private String addText;
 
     public String getTitle() {
         return title;
@@ -53,4 +54,11 @@ public class ParamEntity implements Serializable{
         this.backIcon = backIcon;
     }
 
+    public String getAddText() {
+        return addText;
+    }
+
+    public void setAddText(String addText) {
+        this.addText = addText;
+    }
 }

@@ -54,8 +54,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         mParamEntity = (ParamEntity) getIntent().getExtras().getSerializable("param");
         initView();
         setSupportActionBar(mToolbar);
-
-        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initToolbar();
 
@@ -98,9 +97,10 @@ public class LFilePickerActivity extends AppCompatActivity {
         }
         switch (mParamEntity.getBackIcon()) {
             case Constant.BACKICON_STYLEONE:
-                mToolbar.setNavigationIcon(R.mipmap.back);
+                mToolbar.setNavigationIcon(R.mipmap.backincostyleone);
                 break;
             case Constant.BACKICON_STYLETWO:
+                mToolbar.setNavigationIcon(R.mipmap.backincostyletwo);
                 break;
             default:
                 break;
@@ -127,7 +127,11 @@ public class LFilePickerActivity extends AppCompatActivity {
                 setShowPath(mPath);
                 //清除添加集合中数据
                 mListNumbers.clear();
-                mBtnAddBook.setText("放入书架");
+                if (mParamEntity.getAddText() != null) {
+                    mBtnAddBook.setText(mParamEntity.getAddText());
+                } else {
+                    mBtnAddBook.setText("放入书架");
+                }
             }
         });
         mPathAdapter.setOnItemClickListener(new PathAdapter.OnItemClickListener() {
@@ -144,7 +148,12 @@ public class LFilePickerActivity extends AppCompatActivity {
                         } else {
                             mListNumbers.add(mListFiles.get(position).getAbsolutePath());
                         }
-                        mBtnAddBook.setText("放入书架( " + mListNumbers.size() + " )");
+                        if (mParamEntity.getAddText() != null) {
+                            mBtnAddBook.setText(mParamEntity.getAddText() + "( " + mListNumbers.size() + " )");
+                        } else {
+                            mBtnAddBook.setText("放入书架( " + mListNumbers.size() + " )");
+                        }
+
                     }
                 } else {
                     //单选模式直接返回
@@ -217,7 +226,9 @@ public class LFilePickerActivity extends AppCompatActivity {
         mBtnAddBook = (Button) findViewById(R.id.btn_addbook);
         mEmptyView = findViewById(R.id.empty_view);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        if (mParamEntity.getAddText() != null) {
+            mBtnAddBook.setText(mParamEntity.getAddText());
+        }
     }
 
     /**

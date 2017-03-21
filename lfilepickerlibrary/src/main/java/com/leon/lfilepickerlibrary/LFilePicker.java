@@ -19,6 +19,7 @@ public class LFilePicker {
     private int mBackStyle;
     private int mRequestCode;
     private boolean mMutilyMode = true;
+    private String mAddText;
 
     /**
      * 绑定Activity
@@ -30,6 +31,7 @@ public class LFilePicker {
         this.mActivity = activity;
         return this;
     }
+
 
     /**
      * 设置主标题
@@ -64,6 +66,12 @@ public class LFilePicker {
         return this;
     }
 
+    /**
+     * 请求码
+     *
+     * @param requestCode
+     * @return
+     */
     public LFilePicker withRequestCode(int requestCode) {
         this.mRequestCode = requestCode;
         return this;
@@ -81,10 +89,28 @@ public class LFilePicker {
         return this;
     }
 
+    /**
+     * 设置选择模式，默认为true,多选；false为单选
+     *
+     * @param isMutily
+     * @return
+     */
     public LFilePicker withMutilyMode(boolean isMutily) {
         this.mMutilyMode = isMutily;
         return this;
     }
+
+    /**
+     * 设置多选时按钮文字
+     *
+     * @param text
+     * @return
+     */
+    public LFilePicker withAddText(String text) {
+        this.mAddText = text;
+        return this;
+    }
+
 
     public void start() {
         Intent intent = new Intent(mActivity, LFilePickerActivity.class);
@@ -94,6 +120,7 @@ public class LFilePicker {
         paramEntity.setBackgroundColor(mBackgroundColor);
         paramEntity.setBackIcon(mBackStyle);
         paramEntity.setMutilyMode(mMutilyMode);
+        paramEntity.setAddText(mAddText);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         intent.putExtras(bundle);

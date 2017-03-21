@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.leon.filepicker.R;
 import com.leon.lfilepickerlibrary.LFilePicker;
+import com.leon.lfilepickerlibrary.utils.Constant;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withRequestCode(mRequestCode)
                 .withTitle("TXT选择")
+                .withBackIcon(Constant.BACKICON_STYLETWO)
                 .start();
     }
 
