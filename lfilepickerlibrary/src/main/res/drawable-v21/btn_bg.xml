@@ -3,6 +3,6 @@
         android:color="@color/lightgray">
 
     <item
-        android:drawable="@color/green"
+        android:drawable="@color/defaultColor"
         android:state_pressed="false"/>
 </ripple>

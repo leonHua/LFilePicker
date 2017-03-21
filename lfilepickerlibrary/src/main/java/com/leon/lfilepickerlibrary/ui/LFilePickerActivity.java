@@ -1,9 +1,12 @@
 package com.leon.lfilepickerlibrary.ui;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +14,8 @@ import android.widget.Toast;
 
 import com.leon.lfilepickerlibrary.R;
 import com.leon.lfilepickerlibrary.adapter.PathAdapter;
+import com.leon.lfilepickerlibrary.model.ParamEntity;
+import com.leon.lfilepickerlibrary.utils.Constant;
 import com.leon.lfilepickerlibrary.utils.FileUtils;
 import com.leon.lfilepickerlibrary.widget.EmptyRecyclerView;
 
@@ -29,8 +34,11 @@ public class LFilePickerActivity extends AppCompatActivity {
     private Button mBtnAddBook;
     private String mPath;
     private List<File> mListFiles;
-    private List<String> mListNumbers = new ArrayList<String>();//存放选中条目的数据地址
+    private ArrayList<String> mListNumbers = new ArrayList<String>();//存放选中条目的数据地址
     private PathAdapter mPathAdapter;
+    private Toolbar mToolbar;
+    private ParamEntity mParamEntity;
+    private final int RESULTCODE = 1024;
     private FileFilter mFilter = new FileFilter() {
         @Override
         public boolean accept(File pathname) {
@@ -43,22 +51,60 @@ public class LFilePickerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lfile_picker);
-        //startActivity(new Intent(this,Main2Activity.class));
+        mParamEntity = (ParamEntity) getIntent().getExtras().getSerializable("param");
         initView();
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         if (!checkSDState()) {
             Toast.makeText(this, "没有发现可用存储", Toast.LENGTH_SHORT).show();
             return;
         }
-        //mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         mPath = Environment.getExternalStorageDirectory().getAbsolutePath();
         mTvPath.setText(mPath);
         mListFiles = getFileList(mPath);
-        mPathAdapter = new PathAdapter(mListFiles, this, mFilter);
+        mPathAdapter = new PathAdapter(mListFiles, this, mFilter, mParamEntity.isMutilyMode());
         mRecylerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecylerView.setAdapter(mPathAdapter);
         mRecylerView.setmEmptyView(mEmptyView);
         initListener();
 
+    }
+
+    /**
+     * 更新Toolbar展示
+     */
+    private void initToolbar() {
+        if (mParamEntity.getTitle() != null) {
+            mToolbar.setTitle(mParamEntity.getTitle());
+        }
+        if (mParamEntity.getTitleColor() != null) {
+            mToolbar.setTitleTextColor(Color.parseColor(mParamEntity.getTitleColor())); //设置标题颜色
+        }
+        if (mParamEntity.getBackgroundColor() != null) {
+            mToolbar.setBackgroundColor(Color.parseColor(mParamEntity.getBackgroundColor()));
+        }
+        if (!mParamEntity.isMutilyMode()) {
+            mBtnAddBook.setVisibility(View.GONE);
+        }
+        switch (mParamEntity.getBackIcon()) {
+            case Constant.BACKICON_STYLEONE:
+                mToolbar.setNavigationIcon(R.mipmap.back);
+                break;
+            case Constant.BACKICON_STYLETWO:
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -87,24 +133,29 @@ public class LFilePickerActivity extends AppCompatActivity {
         mPathAdapter.setOnItemClickListener(new PathAdapter.OnItemClickListener() {
             @Override
             public void click(int position) {
-                if (mListFiles.get(position).isDirectory()) {
-                    //如果当前是目录，则进入继续查看目录
-                    mPath = mListFiles.get(position).getAbsolutePath();
-                    setShowPath(mPath);
-                    //更新数据源
-                    mListFiles = getFileList(mPath);
-                    mPathAdapter.setmListData(mListFiles);
-                    mPathAdapter.notifyDataSetChanged();
-                    mRecylerView.scrollToPosition(0);
-                } else {
-                    //如果已经选择则取消，否则添加进来
-                    if (mListNumbers.contains(mListFiles.get(position).getAbsolutePath())) {
-                        mListNumbers.remove(mListFiles.get(position).getAbsolutePath());
+                if (mParamEntity.isMutilyMode()) {
+                    if (mListFiles.get(position).isDirectory()) {
+                        //如果当前是目录，则进入继续查看目录
+                        chekInDirectory(position);
                     } else {
-                        mListNumbers.add(mListFiles.get(position).getAbsolutePath());
+                        //如果已经选择则取消，否则添加进来
+                        if (mListNumbers.contains(mListFiles.get(position).getAbsolutePath())) {
+                            mListNumbers.remove(mListFiles.get(position).getAbsolutePath());
+                        } else {
+                            mListNumbers.add(mListFiles.get(position).getAbsolutePath());
+                        }
+                        mBtnAddBook.setText("放入书架( " + mListNumbers.size() + " )");
                     }
-                    mBtnAddBook.setText("放入书架( " + mListNumbers.size() + " )");
+                } else {
+                    //单选模式直接返回
+                    if (mListFiles.get(position).isDirectory()) {
+                        chekInDirectory(position);
+                        return;
+                    }
+                    mListNumbers.add(mListFiles.get(position).getAbsolutePath());
+                    chooseDone();
                 }
+
             }
         });
 
@@ -115,10 +166,33 @@ public class LFilePickerActivity extends AppCompatActivity {
                     Toast.makeText(LFilePickerActivity.this, R.string.NotFoundBooks, Toast.LENGTH_SHORT).show();
                 } else {
                     //返回
-                    Toast.makeText(LFilePickerActivity.this, "选择的数量：" + mListNumbers.size(), Toast.LENGTH_SHORT).show();
+                    chooseDone();
                 }
             }
         });
+    }
+
+
+    /**
+     * 点击进入目录
+     *
+     * @param position
+     */
+    private void chekInDirectory(int position) {
+        mPath = mListFiles.get(position).getAbsolutePath();
+        setShowPath(mPath);
+        //更新数据源
+        mListFiles = getFileList(mPath);
+        mPathAdapter.setmListData(mListFiles);
+        mPathAdapter.notifyDataSetChanged();
+        mRecylerView.scrollToPosition(0);
+    }
+
+    private void chooseDone() {
+        Intent intent = new Intent();
+        intent.putStringArrayListExtra("paths", mListNumbers);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     /**
@@ -142,6 +216,8 @@ public class LFilePickerActivity extends AppCompatActivity {
         mTvBack = (TextView) findViewById(R.id.tv_back);
         mBtnAddBook = (Button) findViewById(R.id.btn_addbook);
         mEmptyView = findViewById(R.id.empty_view);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
     }
 
     /**

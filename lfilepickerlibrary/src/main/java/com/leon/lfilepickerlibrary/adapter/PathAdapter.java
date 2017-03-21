@@ -35,11 +35,13 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     public OnItemClickListener onItemClickListener;
     private FileFilter mFileFilter;
     private boolean[] mCheckedFlags;
+    private boolean mMutilyMode;
 
-    public PathAdapter(List<File> mListData, Context mContext, FileFilter mFileFilter) {
+    public PathAdapter(List<File> mListData, Context mContext, FileFilter mFileFilter, boolean mMutilyMode) {
         this.mListData = mListData;
         this.mContext = mContext;
         this.mFileFilter = mFileFilter;
+        this.mMutilyMode = mMutilyMode;
         mCheckedFlags = new boolean[mListData.size()];
     }
 
@@ -74,7 +76,9 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
             }
             holder.cbChoose.setVisibility(View.GONE);
         }
-
+        if (!mMutilyMode) {
+            holder.cbChoose.setVisibility(View.GONE);
+        }
         holder.layoutRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
