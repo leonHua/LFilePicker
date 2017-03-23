@@ -201,7 +201,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putStringArrayListExtra("paths", mListNumbers);
         setResult(RESULT_OK, intent);
-        finish();
+        this.finish();
     }
 
     /**

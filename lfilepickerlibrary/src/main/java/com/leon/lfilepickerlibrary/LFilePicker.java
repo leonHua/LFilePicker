@@ -1,8 +1,10 @@
 package com.leon.lfilepickerlibrary;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import com.leon.lfilepickerlibrary.model.ParamEntity;
 import com.leon.lfilepickerlibrary.ui.LFilePickerActivity;
@@ -13,6 +15,8 @@ import com.leon.lfilepickerlibrary.ui.LFilePickerActivity;
  */
 public class LFilePicker {
     private Activity mActivity;
+    private Fragment mFragment;
+    private android.support.v4.app.Fragment mSupportFragment;
     private String mTitle;
     private String mTitleColor;
     private String mBackgroundColor;
@@ -29,6 +33,28 @@ public class LFilePicker {
      */
     public LFilePicker withActivity(Activity activity) {
         this.mActivity = activity;
+        return this;
+    }
+
+    /**
+     * 绑定Fragment
+     *
+     * @param fragment
+     * @return
+     */
+    public LFilePicker withFragment(Fragment fragment) {
+        this.mFragment = fragment;
+        return this;
+    }
+
+    /**
+     * 绑定v4包Fragment
+     *
+     * @param supportFragment
+     * @return
+     */
+    public LFilePicker withSupportFragment(android.support.v4.app.Fragment supportFragment) {
+        this.mSupportFragment = supportFragment;
         return this;
     }
 
@@ -113,7 +139,37 @@ public class LFilePicker {
 
 
     public void start() {
-        Intent intent = new Intent(mActivity, LFilePickerActivity.class);
+        if (mActivity == null && mFragment == null && mSupportFragment == null) {
+            throw new RuntimeException("You must pass Activity or Fragment by withActivity or withFragment or withSupportFragment method");
+        }
+        Intent intent = initIntent();
+        Bundle bundle = getBundle();
+        intent.putExtras(bundle);
+
+        if (mActivity != null) {
+            mActivity.startActivityForResult(intent, mRequestCode);
+        } else if (mFragment != null) {
+            mFragment.startActivityForResult(intent, mRequestCode);
+        } else {
+            mSupportFragment.startActivityForResult(intent, mRequestCode);
+        }
+    }
+
+
+    private Intent initIntent() {
+        Intent intent;
+        if (mActivity != null) {
+            intent = new Intent(mActivity, LFilePickerActivity.class);
+        } else if (mFragment != null) {
+            intent = new Intent(mFragment.getActivity(), LFilePickerActivity.class);
+        } else {
+            intent = new Intent(mSupportFragment.getActivity(), LFilePickerActivity.class);
+        }
+        return intent;
+    }
+
+    @NonNull
+    private Bundle getBundle() {
         ParamEntity paramEntity = new ParamEntity();
         paramEntity.setTitle(mTitle);
         paramEntity.setTitleColor(mTitleColor);
@@ -123,7 +179,6 @@ public class LFilePicker {
         paramEntity.setAddText(mAddText);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
-        intent.putExtras(bundle);
-        mActivity.startActivityForResult(intent, mRequestCode);
+        return bundle;
     }
 }
