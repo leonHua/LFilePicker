@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".activity.MainActivity">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:onClick="openFilePicker"
-        android:text="open"
-        android:textSize="18sp"/>
-</RelativeLayout>
+        android:background="@color/lightgray">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="openFromActivity"
+            android:padding="12dp"
+            android:text="openFromActivity"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightgray">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="openFragmentActivity"
+            android:padding="12dp"
+            android:text="openFragmentActivity"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -14,7 +14,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "FilePickerLeon";
-    private int mRequestCode = 1000;
 
 
     @Override
@@ -23,24 +22,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void openFilePicker(View view) {
+    public void openFromActivity(View view) {
         new LFilePicker()
                 .withActivity(this)
-                .withRequestCode(mRequestCode)
+                .withRequestCode(Consant.mRequestCodeFromActivity)
                 .withTitle("TXT选择")
                 .withBackIcon(Constant.BACKICON_STYLETWO)
                 .start();
     }
 
+    public void openFragmentActivity(View view) {
+        startActivity(new Intent(this, FragmengActivity.class));
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == mRequestCode || resultCode == RESULT_OK) {
-            List<String> list = data.getStringArrayListExtra("paths");
-            for (String s : list) {
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+        if (resultCode == RESULT_OK) {
+            if (requestCode == Consant.mRequestCodeFromActivity) {
+                List<String> list = data.getStringArrayListExtra("paths");
+                for (String s : list) {
+                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                }
             }
-
         }
     }
 }
