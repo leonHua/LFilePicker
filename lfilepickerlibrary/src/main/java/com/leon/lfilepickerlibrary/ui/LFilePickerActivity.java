@@ -45,6 +45,7 @@ public class LFilePickerActivity extends AppCompatActivity {
             return pathname.isDirectory() || pathname.getName().endsWith(".txt") || pathname.getName().endsWith(".TXT");
         }
     };
+    ;
 
 
     @Override
@@ -73,11 +74,13 @@ public class LFilePickerActivity extends AppCompatActivity {
         mListFiles = getFileList(mPath);
         mPathAdapter = new PathAdapter(mListFiles, this, mFilter, mParamEntity.isMutilyMode());
         mRecylerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mPathAdapter.setmIconStyle(mParamEntity.getIconStyle());
         mRecylerView.setAdapter(mPathAdapter);
         mRecylerView.setmEmptyView(mEmptyView);
         initListener();
 
     }
+
 
     /**
      * 更新Toolbar展示
@@ -197,6 +200,9 @@ public class LFilePickerActivity extends AppCompatActivity {
         mRecylerView.scrollToPosition(0);
     }
 
+    /**
+     * 完成提交
+     */
     private void chooseDone() {
         Intent intent = new Intent();
         intent.putStringArrayListExtra("paths", mListNumbers);

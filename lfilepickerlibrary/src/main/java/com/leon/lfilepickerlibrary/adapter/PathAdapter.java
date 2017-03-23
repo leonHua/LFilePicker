@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.leon.lfilepickerlibrary.R;
+import com.leon.lfilepickerlibrary.utils.Constant;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -36,6 +37,7 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     private FileFilter mFileFilter;
     private boolean[] mCheckedFlags;
     private boolean mMutilyMode;
+    private int mIconStyle;
 
     public PathAdapter(List<File> mListData, Context mContext, FileFilter mFileFilter, boolean mMutilyMode) {
         this.mListData = mListData;
@@ -61,12 +63,12 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     public void onBindViewHolder(final PathViewHolder holder, final int position) {
         final File file = mListData.get(position);
         if (file.isFile()) {
-            holder.ivType.setBackgroundResource(R.mipmap.file);
+            updateFileIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
             holder.tvDetail.setText("详情");
             holder.cbChoose.setVisibility(View.VISIBLE);
         } else {
-            holder.ivType.setBackgroundResource(R.mipmap.folder);
+            updateFloaderIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
             File[] files = file.listFiles(mFileFilter);
             if (files == null) {
@@ -106,6 +108,34 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
         });
     }
 
+    private void updateFloaderIconStyle(ImageView imageView) {
+        switch (mIconStyle) {
+            case Constant.ICON_STYLE_BLUE:
+                imageView.setBackgroundResource(R.mipmap.folder_style_blue);
+                break;
+            case Constant.ICON_STYLE_GREEN:
+                imageView.setBackgroundResource(R.mipmap.folder_style_green);
+                break;
+            case Constant.ICON_STYLE_YELLOW:
+                imageView.setBackgroundResource(R.mipmap.folder_style_yellow);
+                break;
+        }
+    }
+
+    private void updateFileIconStyle(ImageView imageView) {
+        switch (mIconStyle) {
+            case Constant.ICON_STYLE_BLUE:
+                imageView.setBackgroundResource(R.mipmap.file_style_blue);
+                break;
+            case Constant.ICON_STYLE_GREEN:
+                imageView.setBackgroundResource(R.mipmap.file_style_green);
+                break;
+            case Constant.ICON_STYLE_YELLOW:
+                imageView.setBackgroundResource(R.mipmap.file_style_yellow);
+                break;
+        }
+    }
+
     /**
      * 设置监听器
      *
@@ -123,6 +153,10 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     public void setmListData(List<File> mListData) {
         this.mListData = mListData;
         mCheckedFlags = new boolean[mListData.size()];
+    }
+
+    public void setmIconStyle(int mIconStyle) {
+        this.mIconStyle = mIconStyle;
     }
 
     class PathViewHolder extends RecyclerView.ViewHolder {

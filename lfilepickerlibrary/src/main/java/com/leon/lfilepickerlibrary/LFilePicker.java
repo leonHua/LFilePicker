@@ -24,6 +24,7 @@ public class LFilePicker {
     private int mRequestCode;
     private boolean mMutilyMode = true;
     private String mAddText;
+    private int mIconStyle;
 
     /**
      * 绑定Activity
@@ -137,6 +138,11 @@ public class LFilePicker {
         return this;
     }
 
+    public LFilePicker withIconStyle(int style) {
+        this.mIconStyle = style;
+        return this;
+    }
+
 
     public void start() {
         if (mActivity == null && mFragment == null && mSupportFragment == null) {
@@ -177,6 +183,7 @@ public class LFilePicker {
         paramEntity.setBackIcon(mBackStyle);
         paramEntity.setMutilyMode(mMutilyMode);
         paramEntity.setAddText(mAddText);
+        paramEntity.setIconStyle(mIconStyle);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;

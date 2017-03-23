@@ -6,13 +6,14 @@ import java.io.Serializable;
  * 作者：Leon
  * 时间：2017/3/21 14:50
  */
-public class ParamEntity implements Serializable{
+public class ParamEntity implements Serializable {
     private String title;
     private String titleColor;
     private String backgroundColor;
     private int backIcon;
     private boolean mutilyMode;
     private String addText;
+    private int iconStyle;
 
     public String getTitle() {
         return title;
@@ -60,5 +61,13 @@ public class ParamEntity implements Serializable{
 
     public void setAddText(String addText) {
         this.addText = addText;
+    }
+
+    public int getIconStyle() {
+        return iconStyle;
+    }
+
+    public void setIconStyle(int iconStyle) {
+        this.iconStyle = iconStyle;
     }
 }
