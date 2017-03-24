@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">LFilePickerLibrary</string>
-    <string name="NotFoundBooks">请选择导入的图书</string>
+    <string name="NotFoundBooks">Please select a file at least</string>
+    <string name="NotFoundPath">The sd card is not available</string>
+    <string name="UpOneLevel">Up</string>
+    <string name="Selected">selected</string>
+    <string name="LItem">item</string>
+    <string name="Detail">detail</string>
+    <string name="FileSize">size : </string>
 </resources>

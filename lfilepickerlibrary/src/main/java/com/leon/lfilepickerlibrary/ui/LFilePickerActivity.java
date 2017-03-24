@@ -52,7 +52,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initToolbar();
         if (!checkSDState()) {
-            Toast.makeText(this, "没有发现可用存储", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.NotFoundPath, Toast.LENGTH_SHORT).show();
             return;
         }
         mPath = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -126,7 +126,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                 if (mParamEntity.getAddText() != null) {
                     mBtnAddBook.setText(mParamEntity.getAddText());
                 } else {
-                    mBtnAddBook.setText("放入书架");
+                    mBtnAddBook.setText(R.string.Selected);
                 }
             }
         });
@@ -147,7 +147,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                         if (mParamEntity.getAddText() != null) {
                             mBtnAddBook.setText(mParamEntity.getAddText() + "( " + mListNumbers.size() + " )");
                         } else {
-                            mBtnAddBook.setText("放入书架( " + mListNumbers.size() + " )");
+                            mBtnAddBook.setText(R.string.Selected + "( " + mListNumbers.size() + " )");
                         }
 
                     }

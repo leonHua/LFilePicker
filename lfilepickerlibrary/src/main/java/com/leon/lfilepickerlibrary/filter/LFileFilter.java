@@ -25,7 +25,9 @@ public class LFileFilter implements FileFilter {
                     return true;
                 }
             }
+        }else {
+            return true;
         }
-        return true;
+        return false;
     }
 }

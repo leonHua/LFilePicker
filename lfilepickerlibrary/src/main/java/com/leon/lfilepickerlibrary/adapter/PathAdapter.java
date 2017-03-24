@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.leon.lfilepickerlibrary.R;
 import com.leon.lfilepickerlibrary.utils.Constant;
+import com.leon.lfilepickerlibrary.utils.FileUtils;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -65,16 +66,16 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
         if (file.isFile()) {
             updateFileIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
-            holder.tvDetail.setText("详情");
+            holder.tvDetail.setText(mContext.getString(R.string.FileSize) +" "+ FileUtils.getReadableFileSize(file.length()));
             holder.cbChoose.setVisibility(View.VISIBLE);
         } else {
             updateFloaderIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
             File[] files = file.listFiles(mFileFilter);
             if (files == null) {
-                holder.tvDetail.setText("0项");
+                holder.tvDetail.setText("0 " + mContext.getString(R.string.LItem));
             } else {
-                holder.tvDetail.setText(files.length + "项");
+                holder.tvDetail.setText(files.length + " " + mContext.getString(R.string.LItem));
             }
             holder.cbChoose.setVisibility(View.GONE);
         }
