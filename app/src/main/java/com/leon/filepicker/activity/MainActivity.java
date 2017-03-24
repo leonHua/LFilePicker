@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.leon.filepicker.R;
@@ -14,12 +15,59 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "FilePickerLeon";
+    private RadioGroup mRgIconType;
+    private RadioGroup mRgBackArrawType;
+    private int mIconType;
+    private int mBackArrawType;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
+        initListener();
+    }
+
+
+    private void initView() {
+        mRgIconType = (RadioGroup) findViewById(R.id.rg_iconstyle);
+        mRgBackArrawType = (RadioGroup) findViewById(R.id.rg_backarrawstyle);
+    }
+
+    private void initListener() {
+        mRgIconType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radio_yellow:
+                        mIconType = Constant.ICON_STYLE_YELLOW;
+                        break;
+                    case R.id.radio_green:
+                        mIconType = Constant.ICON_STYLE_GREEN;
+                        break;
+                    case R.id.radio_blue:
+                        mIconType = Constant.ICON_STYLE_BLUE;
+                        break;
+                }
+            }
+        });
+        mRgBackArrawType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.arrawback_styleone:
+                        mBackArrawType = Constant.BACKICON_STYLEONE;
+                        break;
+                    case R.id.arrawback_styletwo:
+                        mBackArrawType = Constant.BACKICON_STYLETWO;
+                        break;
+                    case R.id.arrawback_stylethree:
+                        mBackArrawType = Constant.BACKICON_STYLETHREE;
+                        break;
+                }
+            }
+        });
     }
 
     public void openFromActivity(View view) {
@@ -27,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withRequestCode(Consant.mRequestCodeFromActivity)
                 .withTitle("TXT选择")
-                .withIconStyle(Constant.ICON_STYLE_BLUE)
-                .withBackIcon(Constant.BACKICON_STYLETWO)
+                .withIconStyle(mIconType)
+                .withBackIcon(mBackArrawType)
                 .withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
     }

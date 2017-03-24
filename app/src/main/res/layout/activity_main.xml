@@ -26,9 +26,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@color/lightgray">
 
         <TextView
@@ -42,4 +42,43 @@
             android:textSize="18sp"/>
     </LinearLayout>
 
+    <RadioGroup
+        android:id="@+id/rg_iconstyle"
+        style="@style/RadioGroupStyle">
+
+        <RadioButton
+            android:id="@+id/radio_yellow"
+            style="@style/RadioStyle"
+            android:text="经典风-黄"/>
+
+        <RadioButton
+            android:id="@+id/radio_green"
+            style="@style/RadioStyle"
+            android:text="清新风-绿"/>
+
+        <RadioButton
+            android:id="@+id/radio_blue"
+            style="@style/RadioStyle"
+            android:text="柔和风-蓝"/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rg_backarrawstyle"
+        style="@style/RadioGroupStyle">
+
+        <RadioButton
+            android:id="@+id/arrawback_styleone"
+            style="@style/RadioStyle"
+            android:text="返回按钮1"/>
+
+        <RadioButton
+            android:id="@+id/arrawback_styletwo"
+            style="@style/RadioStyle"
+            android:text="返回按钮2"/>
+
+        <RadioButton
+            android:id="@+id/arrawback_stylethree"
+            style="@style/RadioStyle"
+            android:text="返回按钮3"/>
+    </RadioGroup>
 </LinearLayout>
