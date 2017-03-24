@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withRequestCode(Consant.mRequestCodeFromActivity)
                 .withTitle("TXT选择")
+                .withIconStyle(Constant.ICON_STYLE_BLUE)
                 .withBackIcon(Constant.BACKICON_STYLETWO)
+                .withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
     }
 
