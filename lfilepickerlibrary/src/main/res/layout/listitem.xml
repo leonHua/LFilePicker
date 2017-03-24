@@ -18,6 +18,7 @@
 
     <CheckBox
         android:id="@+id/cb_choose"
+        android:theme="@style/CheckBoxTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

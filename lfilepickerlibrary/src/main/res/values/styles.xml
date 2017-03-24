@@ -12,6 +12,10 @@
         <!-- 溢出菜单图标颜色-->
         <item name="colorControlNormal">@android:color/white</item>
     </style>
+    <style name="CheckBoxTheme" parent="LibraryAppTheme">
+        <!-- 溢出菜单图标颜色-->
+        <item name="colorControlNormal">@color/gray</item>
+    </style>
 
     <style name="item_text_name">
         <item name="android:layout_width">match_parent</item>

@@ -91,7 +91,8 @@ public class LFilePickerActivity extends AppCompatActivity {
             case Constant.BACKICON_STYLETWO:
                 mToolbar.setNavigationIcon(R.mipmap.backincostyletwo);
                 break;
-            default:
+            case Constant.BACKICON_STYLETHREE:
+                //默认风格
                 break;
         }
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

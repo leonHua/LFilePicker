@@ -19,11 +19,13 @@ public class LFileFilter implements FileFilter {
         if (file.isDirectory()) {
             return true;
         }
-        for (int i = 0; i < mTypes.length; i++) {
-            if (file.getName().endsWith(mTypes[i].toLowerCase()) || file.getName().endsWith(mTypes[i].toUpperCase())) {
-                return true;
+        if (mTypes != null && mTypes.length > 0) {
+            for (int i = 0; i < mTypes.length; i++) {
+                if (file.getName().endsWith(mTypes[i].toLowerCase()) || file.getName().endsWith(mTypes[i].toUpperCase())) {
+                    return true;
+                }
             }
         }
-        return false;
+        return true;
     }
 }
