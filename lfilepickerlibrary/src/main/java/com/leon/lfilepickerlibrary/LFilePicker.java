@@ -25,6 +25,7 @@ public class LFilePicker {
     private boolean mMutilyMode = true;
     private String mAddText;
     private int mIconStyle;
+    private String[] mFileTypes;
 
     /**
      * 绑定Activity
@@ -138,11 +139,21 @@ public class LFilePicker {
         return this;
     }
 
+    /**
+     * 设置文件夹图标风格
+     *
+     * @param style
+     * @return
+     */
     public LFilePicker withIconStyle(int style) {
         this.mIconStyle = style;
         return this;
     }
 
+    public LFilePicker withFileFilter(String[] arrs) {
+        this.mFileTypes = arrs;
+        return this;
+    }
 
     public void start() {
         if (mActivity == null && mFragment == null && mSupportFragment == null) {
@@ -184,6 +195,7 @@ public class LFilePicker {
         paramEntity.setMutilyMode(mMutilyMode);
         paramEntity.setAddText(mAddText);
         paramEntity.setIconStyle(mIconStyle);
+        paramEntity.setFileTypes(mFileTypes);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;

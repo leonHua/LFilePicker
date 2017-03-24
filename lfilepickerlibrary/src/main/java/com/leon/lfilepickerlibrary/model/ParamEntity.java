@@ -14,6 +14,7 @@ public class ParamEntity implements Serializable {
     private boolean mutilyMode;
     private String addText;
     private int iconStyle;
+    private String[] fileTypes;
 
     public String getTitle() {
         return title;
@@ -69,5 +70,13 @@ public class ParamEntity implements Serializable {
 
     public void setIconStyle(int iconStyle) {
         this.iconStyle = iconStyle;
+    }
+
+    public String[] getFileTypes() {
+        return fileTypes;
+    }
+
+    public void setFileTypes(String[] fileTypes) {
+        this.fileTypes = fileTypes;
     }
 }

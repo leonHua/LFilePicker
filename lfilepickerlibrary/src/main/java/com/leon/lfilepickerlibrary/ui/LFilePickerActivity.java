@@ -14,13 +14,13 @@ import android.widget.Toast;
 
 import com.leon.lfilepickerlibrary.R;
 import com.leon.lfilepickerlibrary.adapter.PathAdapter;
+import com.leon.lfilepickerlibrary.filter.LFileFilter;
 import com.leon.lfilepickerlibrary.model.ParamEntity;
 import com.leon.lfilepickerlibrary.utils.Constant;
 import com.leon.lfilepickerlibrary.utils.FileUtils;
 import com.leon.lfilepickerlibrary.widget.EmptyRecyclerView;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,14 +39,7 @@ public class LFilePickerActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private ParamEntity mParamEntity;
     private final int RESULTCODE = 1024;
-    private FileFilter mFilter = new FileFilter() {
-        @Override
-        public boolean accept(File pathname) {
-            return pathname.isDirectory() || pathname.getName().endsWith(".txt") || pathname.getName().endsWith(".TXT");
-        }
-    };
-    ;
-
+    private LFileFilter mFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +51,13 @@ public class LFilePickerActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initToolbar();
-
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         if (!checkSDState()) {
             Toast.makeText(this, "没有发现可用存储", Toast.LENGTH_SHORT).show();
             return;
         }
         mPath = Environment.getExternalStorageDirectory().getAbsolutePath();
         mTvPath.setText(mPath);
+        mFilter = new LFileFilter(mParamEntity.getFileTypes());
         mListFiles = getFileList(mPath);
         mPathAdapter = new PathAdapter(mListFiles, this, mFilter, mParamEntity.isMutilyMode());
         mRecylerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -80,7 +67,6 @@ public class LFilePickerActivity extends AppCompatActivity {
         initListener();
 
     }
-
 
     /**
      * 更新Toolbar展示
@@ -108,6 +94,12 @@ public class LFilePickerActivity extends AppCompatActivity {
             default:
                 break;
         }
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     /**
