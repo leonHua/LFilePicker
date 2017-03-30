@@ -10,8 +10,21 @@
  - 支持Fragment启动
 
 ### 运行效果：
-![][1]
-
+#### 动态操作
+![][14]
+![][15]
+![][16]
+![][17]
+#### 页面效果：
+![][5]
+![][6]
+![][7]
+![][8]
+![][9]
+![][10]
+![][11]
+![][12]
+![][13]
 
 ### 快速使用
 #### 1. 添加引用
@@ -77,7 +90,19 @@
 如果本库对你有用，欢迎star或者fork! 欢迎访问 [博客][4] 查看更多文章。
 
 
-  [1]: http://github.com/leonHua/LFilePicker/raw/master/screenshot/Screenshot_20170330-132717.png
+  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-132717.png?imageView2/0/w/500/h/1200/q/100
+  [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133458.png?imageView2/0/w/500/h/1200/q/100
+  [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133811.png?imageView2/0/w/500/h/1200/q/100
+  [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133831.png?imageView2/0/w/500/h/1200/q/100
+  [9]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133836.png?imageView2/0/w/500/h/1200/q/100
+  [10]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133844.png?imageView2/0/w/500/h/1200/q/100
+  [11]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-134316.png?imageView2/0/w/500/h/1200/q/100
+  [12]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-134327.png?imageView2/0/w/500/h/1200/q/100
+  [13]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-134333.png?imageView2/0/w/500/h/1200/q/100
+  [14]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C01.gif?imageView2/0/w/700/h/1400/q/100
+  [15]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C02.gif?imageView2/0/w/700/h/1400/q/100
+  [16]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C03.gif?imageView2/0/w/700/h/1400/q/100
+  [17]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C04.gif?imageView2/0/w/700/h/1400/q/100
   [2]: https://github.com/Blankj/AndroidUtilCode
   [3]: https://github.com/nbsp-team/MaterialFilePicker
   [4]: https://leonhua.github.io/
