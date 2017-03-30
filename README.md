@@ -67,16 +67,21 @@
 
 #### 提供样式
 
- **withIconStyle(int style)** 取值样式：
+ **withIconStyle(int style)** 取值模式：
  
  - Constant.BACKICON_STYLEONE
  - Constant.BACKICON_STYLETWO
  - Constant.BACKICON_STYLETHREE
  
- **withBackIcon(int backStyle)** 取值样式：
+ **withBackIcon(int backStyle)** 取值模式：
  - Constant.ICON_STYLE_YELLOW
  - Constant.ICON_STYLE_BLUE
  - Constant.ICON_STYLE_GREEN
+ 
+  **withFileFilter(String[] arrs)** 取值模式：
+
+     withFileFilter(new String[]{".txt", ".png", ".docx"})
+
  
 ### 感谢
  - 使用了[AndroidUtilCode][2]中的文件工具类
