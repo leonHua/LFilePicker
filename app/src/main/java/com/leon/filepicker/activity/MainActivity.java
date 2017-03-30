@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == Consant.REQUESTCODE_FROM_ACTIVITY) {
-                List<String> list = data.getStringArrayListExtra(Consant.RESULT_INFO);
+                List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
                 //for (String s : list) {
                 //    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 //}
