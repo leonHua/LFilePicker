@@ -73,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
     public void openFromActivity(View view) {
         new LFilePicker()
                 .withActivity(this)
-                .withRequestCode(Consant.mRequestCodeFromActivity)
-                .withTitle("TXT选择")
+                .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
+                .withTitle("文件选择")
                 .withIconStyle(mIconType)
                 .withBackIcon(mBackArrawType)
-                .withFileFilter(new String[]{"txt", "png", "docx"})
+                //.withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
     }
 
@@ -89,11 +89,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == Consant.mRequestCodeFromActivity) {
-                List<String> list = data.getStringArrayListExtra("paths");
-                for (String s : list) {
-                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                }
+            if (requestCode == Consant.REQUESTCODE_FROM_ACTIVITY) {
+                List<String> list = data.getStringArrayListExtra(Consant.RESULT_INFO);
+                //for (String s : list) {
+                //    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                //}
+                Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
             }
         }
     }
