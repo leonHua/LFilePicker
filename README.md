@@ -11,8 +11,7 @@
 
 ### 运行效果：
 #### 动态操作（如果图片无法正常显示，可以查看screenshot文件夹中gif文件）
-![](screenshot/操作1.gif)
-![](screenshot/操作2.gif)
+![](screenshot/操作.gif)
 #### 页面效果：
 ![][5]
 ![][6]
