@@ -126,7 +126,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                 if (mParamEntity.getAddText() != null) {
                     mBtnAddBook.setText(mParamEntity.getAddText());
                 } else {
-                    mBtnAddBook.setText(R.string.Selected);
+                    mBtnAddBook.setText(getString(R.string.Selected));
                 }
             }
         });
@@ -147,7 +147,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                         if (mParamEntity.getAddText() != null) {
                             mBtnAddBook.setText(mParamEntity.getAddText() + "( " + mListNumbers.size() + " )");
                         } else {
-                            mBtnAddBook.setText(R.string.Selected + "( " + mListNumbers.size() + " )");
+                            mBtnAddBook.setText(getString(R.string.Selected) + "( " + mListNumbers.size() + " )");
                         }
 
                     }
