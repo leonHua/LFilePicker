@@ -52,7 +52,7 @@ public class FileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 new LFilePicker().withSupportFragment(mFragment)
-                        .withRequestCode(Consant.mRequestCodeFromFragment)
+                        .withRequestCode(Consant.REQUESTCODE_FROM_FRAGMENT)
                         .withTitle("Open From Fragment")
                         .start();
             }
@@ -69,7 +69,7 @@ public class FileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == Consant.mRequestCodeFromFragment) {
+            if (requestCode == Consant.REQUESTCODE_FROM_FRAGMENT) {
                 List<String> list = data.getStringArrayListExtra("paths");
                 for (String s : list) {
                     Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
