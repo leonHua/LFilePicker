@@ -1,16 +1,18 @@
-----------
-### [中文文档](README_CH.md)
-This is a lightweight file selector, it can select files by retrieve phone directory. At the same time contains：
+---
 
- - A variety of interface style
- - Support file multiple-choice or radio
- - Support the file type filter
- - Support the fragments
+## LFilePicker
 
-### Running effect：
-#### dynamic effect（If the picture can't display properly, you can view the screenshot GIF files in the folder）
+这是一个轻量级的文件选择器，可以检索手机目录选择文件。同时包含：
+
+ - 多种界面风格
+ - 支持文件多选或者单选
+ - 支持文件类型过滤
+ - 支持Fragment启动
+
+### 运行效果：
+#### 动态操作（如果图片无法正常显示，可以查看screenshot文件夹中gif文件）
 ![](screenshot/操作.gif)
-#### the page：
+#### 页面效果：
 ![][5]
 ![][6]
 ![][7]
@@ -21,19 +23,19 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 ![][12]
 ![][13]
 
-### Quick to use
-#### 1. add reference
+### 快速使用
+#### 1. 添加引用
 
     compile 'com.leon:lfilepickerlibrary:1.0'
     
-#### 2. open Activity
+#### 2. 开启Activity
 
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .start();
                 
-#### 3. accept the results of the return
+#### 3. 接收返回结果
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -46,49 +48,48 @@ This is a lightweight file selector, it can select files by retrieve phone direc
         }
     }
     
-### Interface methods
-#### method statement
-| method        | statement   |
+### 接口方法
+#### 方法说明
+| 方法        | 说明   |
 | --------   | --------- |
-| withActivity(Activity activity)   |bind Activity|
-| withFragment(Fragment fragment)   |bind Fragment|
-| withSupportFragment(Fragment supportFragment)|bind V4 Fragment|
-| withRequestCode(int requestCode)  |set the request code|
-| withTitle(String title)           |Set the title|
-| withTitleColor(String color)      |Set the title color|
-| withBackgroundColor(String color) |Set the title background color|
-| withIconStyle(int style)          |set the list icon style|
-| withBackIcon(int backStyle)       |set back icon style|
-| withFileFilter(String[] arrs)     |set the file type filter|
-| withMutilyMode(boolean isMutily)  |setting a multiple-choice or radio mode|
-| withAddText(String text)          |set the multiselect mode selected text|
+| withActivity(Activity activity)   |绑定Activity|
+| withFragment(Fragment fragment)   |绑定Fragment|
+| withSupportFragment(Fragment supportFragment)|绑定V4包Fragment|
+| withRequestCode(int requestCode)  |设置请求码|
+| withTitle(String title)           |设置标题文字|
+| withTitleColor(String color)      |设置标题文字颜色|
+| withBackgroundColor(String color) |设置标题背景颜色|
+| withIconStyle(int style)          |设置列表图标样式|
+| withBackIcon(int backStyle)       |设置返回图标样式|
+| withFileFilter(String[] arrs)     |设置文件类型过滤器|
+| withMutilyMode(boolean isMutily)  |设置多选或单选模式|
+| withAddText(String text)          |设置多选模式选中文字|
 
-#### Provide style
+#### 提供样式
 
- **withIconStyle(int style)** Value model：
+ **withIconStyle(int style)** 取值模式：
  
  - Constant.BACKICON_STYLEONE
  - Constant.BACKICON_STYLETWO
  - Constant.BACKICON_STYLETHREE
  
- **withBackIcon(int backStyle)** Value model：
+ **withBackIcon(int backStyle)** 取值模式：
  - Constant.ICON_STYLE_YELLOW
  - Constant.ICON_STYLE_BLUE
  - Constant.ICON_STYLE_GREEN
  
-  **withFileFilter(String[] arrs)** Value model：
+  **withFileFilter(String[] arrs)** 取值模式：
 
      withFileFilter(new String[]{".txt", ".png", ".docx"})
 
  
-### Thanks
- - [AndroidUtilCode][2]
- - [MaterialFilePicker][3]
+### 感谢
+ - 使用了[AndroidUtilCode][2]中的文件工具类
+ - 参考了[MaterialFilePicker][3]部分思路
 
 
 ----------
-If the library is useful to you, welcome to star or fork!
-Welcome to visit [blog] [4] for more articles.
+如果本库对你有用，欢迎star或者fork! 欢迎访问 [博客][4] 查看更多文章。
 
 
   [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-132717.png?imageView2/0/w/500/h/1200/q/100
