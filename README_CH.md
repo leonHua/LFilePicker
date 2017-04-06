@@ -28,14 +28,19 @@
 
     compile 'com.leon:lfilepickerlibrary:1.0'
     
-#### 2. 开启Activity
+#### 2. 添加文件读写权限
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+
+#### 3. 开启Activity
 
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .start();
                 
-#### 3. 接收返回结果
+#### 4. 接收返回结果
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
