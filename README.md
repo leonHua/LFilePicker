@@ -26,14 +26,19 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
     compile 'com.leon:lfilepickerlibrary:1.0'
     
-#### 2. open Activity
+#### 2. add permission
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+   
+    
+#### 3. open Activity
 
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .start();
                 
-#### 3. accept the results of the return
+#### 4. accept the results of the return
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
