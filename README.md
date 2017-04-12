@@ -6,6 +6,8 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - Support file multiple-choice or radio
  - Support the file type filter
  - Support the fragments
+ - custom title text and color
+ - Internationalization (switch in both Chinese and English)
 
 ### Running effect：
 #### dynamic effect（If the picture can't display properly, you can view the screenshot GIF files in the folder）
