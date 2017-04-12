@@ -84,7 +84,8 @@ This is a lightweight file selector, it can select files by retrieve phone direc
   **withFileFilter(String[] arrs)** Value model：
 
      withFileFilter(new String[]{".txt", ".png", ".docx"})
-
+     
+### More detailed usage：[简书：LFilePicker---文件选择利器，各种样式有它就够了](http://www.jianshu.com/p/eeb211e190be)
  
 ### Thanks
  - [AndroidUtilCode][2]
