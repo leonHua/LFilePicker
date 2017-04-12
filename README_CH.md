@@ -8,7 +8,8 @@
  - 支持文件多选或者单选
  - 支持文件类型过滤
  - 支持Fragment启动
-
+ - 自定义标题文字和颜色
+ - 国际化（中英文切换）
 ### 运行效果：
 #### 动态操作（如果图片无法正常显示，可以查看screenshot文件夹中gif文件）
 ![](screenshot/操作.gif)
@@ -28,14 +29,19 @@
 
     compile 'com.leon:lfilepickerlibrary:1.0'
     
-#### 2. 开启Activity
+#### 2. 添加文件读写权限
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+
+#### 3. 开启Activity
 
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .start();
                 
-#### 3. 接收返回结果
+#### 4. 接收返回结果
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -82,7 +88,8 @@
 
      withFileFilter(new String[]{".txt", ".png", ".docx"})
 
- 
+### 详细使用请参考文章：[简书：LFilePicker---文件选择利器，各种样式有它就够了](http://www.jianshu.com/p/eeb211e190be)
+
 ### 感谢
  - 使用了[AndroidUtilCode][2]中的文件工具类
  - 参考了[MaterialFilePicker][3]部分思路

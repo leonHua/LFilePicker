@@ -6,6 +6,8 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - Support file multiple-choice or radio
  - Support the file type filter
  - Support the fragments
+ - custom title text and color
+ - Internationalization (switch in both Chinese and English)
 
 ### Running effect：
 #### dynamic effect（If the picture can't display properly, you can view the screenshot GIF files in the folder）
@@ -26,14 +28,19 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
     compile 'com.leon:lfilepickerlibrary:1.0'
     
-#### 2. open Activity
+#### 2. add permission
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+   
+    
+#### 3. open Activity
 
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .start();
                 
-#### 3. accept the results of the return
+#### 4. accept the results of the return
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -79,7 +86,8 @@ This is a lightweight file selector, it can select files by retrieve phone direc
   **withFileFilter(String[] arrs)** Value model：
 
      withFileFilter(new String[]{".txt", ".png", ".docx"})
-
+     
+### More detailed usage：[简书：LFilePicker---文件选择利器，各种样式有它就够了](http://www.jianshu.com/p/eeb211e190be)
  
 ### Thanks
  - [AndroidUtilCode][2]
