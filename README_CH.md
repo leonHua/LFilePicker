@@ -87,7 +87,8 @@
 
      withFileFilter(new String[]{".txt", ".png", ".docx"})
 
- 
+### 详细使用请参考文章：[简书：LFilePicker---文件选择利器，各种样式有它就够了](http://www.jianshu.com/p/eeb211e190be)
+
 ### 感谢
  - 使用了[AndroidUtilCode][2]中的文件工具类
  - 参考了[MaterialFilePicker][3]部分思路
