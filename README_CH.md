@@ -27,7 +27,7 @@
 ### 快速使用
 #### 1. 添加引用
 
-    compile 'com.leon:lfilepickerlibrary:1.1'
+    compile 'com.leon:lfilepickerlibrary:1.2.0'
 or
 
     [下载aar文件](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary.aar?attname=)
