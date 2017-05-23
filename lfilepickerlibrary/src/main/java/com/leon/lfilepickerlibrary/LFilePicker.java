@@ -26,6 +26,7 @@ public class LFilePicker {
     private String mAddText;
     private int mIconStyle;
     private String[] mFileTypes;
+    private String mNotFoundFiles;
 
     /**
      * 绑定Activity
@@ -155,6 +156,17 @@ public class LFilePicker {
         return this;
     }
 
+    /**
+     * 没有选中文件时的提示信息
+     *
+     * @param notFoundFiles
+     * @return
+     */
+    public LFilePicker withNotFoundBooks(String notFoundFiles) {
+        this.mNotFoundFiles = notFoundFiles;
+        return this;
+    }
+
     public void start() {
         if (mActivity == null && mFragment == null && mSupportFragment == null) {
             throw new RuntimeException("You must pass Activity or Fragment by withActivity or withFragment or withSupportFragment method");
@@ -196,6 +208,7 @@ public class LFilePicker {
         paramEntity.setAddText(mAddText);
         paramEntity.setIconStyle(mIconStyle);
         paramEntity.setFileTypes(mFileTypes);
+        paramEntity.setNotFoundFiles(mNotFoundFiles);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;

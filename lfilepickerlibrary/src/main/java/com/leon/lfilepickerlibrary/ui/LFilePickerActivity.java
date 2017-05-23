@@ -7,6 +7,8 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -126,7 +128,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                 if (mParamEntity.getAddText() != null) {
                     mBtnAddBook.setText(mParamEntity.getAddText());
                 } else {
-                    mBtnAddBook.setText(getString(R.string.Selected));
+                    mBtnAddBook.setText(R.string.Selected);
                 }
             }
         });
@@ -168,7 +170,13 @@ public class LFilePickerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mListNumbers.size() < 1) {
-                    Toast.makeText(LFilePickerActivity.this, R.string.NotFoundBooks, Toast.LENGTH_SHORT).show();
+                    String info = mParamEntity.getNotFoundFiles();
+                    if (TextUtils.isEmpty(info)) {
+                        Toast.makeText(LFilePickerActivity.this, R.string.NotFoundBooks, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LFilePickerActivity.this, info, Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
                     //返回
                     chooseDone();
