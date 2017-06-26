@@ -51,7 +51,8 @@ or
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUESTCODE_FROM_ACTIVITY) {
-                List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
+                 //List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);//Constant.RESULT_INFO == "paths"
+                              List<String> list = data.getStringArrayListExtra("paths");
                 Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
             }
         }
