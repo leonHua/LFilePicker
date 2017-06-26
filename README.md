@@ -36,7 +36,7 @@ or
    
     
 #### 3. open Activity
-
+    int REQUESTCODE_FROM_ACTIVITY = 1000;
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
@@ -48,7 +48,7 @@ or
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == Consant.REQUESTCODE_FROM_ACTIVITY) {
+            if (requestCode == REQUESTCODE_FROM_ACTIVITY) {
                 List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
                 Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
             }
