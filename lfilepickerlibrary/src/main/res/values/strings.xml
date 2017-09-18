@@ -7,4 +7,5 @@
     <string name="LItem">item</string>
     <string name="Detail">detail</string>
     <string name="FileSize">size : </string>
+    <string name="OutSize">Has reached the maximum number</string>
 </resources>

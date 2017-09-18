@@ -7,4 +7,5 @@
     <string name="LItem">项</string>
     <string name="Detail">详情</string>
     <string name="FileSize">文件大小 : </string>
+    <string name="OutSize">已经达到最大选择数量</string>
 </resources>

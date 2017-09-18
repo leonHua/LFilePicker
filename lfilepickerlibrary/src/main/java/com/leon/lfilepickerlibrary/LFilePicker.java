@@ -27,6 +27,7 @@ public class LFilePicker {
     private int mIconStyle;
     private String[] mFileTypes;
     private String mNotFoundFiles;
+    private int mMaxNum;
 
     /**
      * 绑定Activity
@@ -167,6 +168,17 @@ public class LFilePicker {
         return this;
     }
 
+    /**
+     * 设置最大选中数量
+     *
+     * @param num
+     * @return
+     */
+    public LFilePicker withMaxNum(int num) {
+        this.mMaxNum = num;
+        return this;
+    }
+
     public void start() {
         if (mActivity == null && mFragment == null && mSupportFragment == null) {
             throw new RuntimeException("You must pass Activity or Fragment by withActivity or withFragment or withSupportFragment method");
@@ -209,6 +221,7 @@ public class LFilePicker {
         paramEntity.setIconStyle(mIconStyle);
         paramEntity.setFileTypes(mFileTypes);
         paramEntity.setNotFoundFiles(mNotFoundFiles);
+        paramEntity.setMaxNum(mMaxNum);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;

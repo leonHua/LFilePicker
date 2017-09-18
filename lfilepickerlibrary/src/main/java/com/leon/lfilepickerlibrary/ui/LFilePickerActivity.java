@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -152,6 +151,12 @@ public class LFilePickerActivity extends AppCompatActivity {
                             mBtnAddBook.setText(getString(R.string.Selected) + "( " + mListNumbers.size() + " )");
                         }
 
+                        //先判断是否达到最大数量，如果数量达到上限提示，否则继续添加
+                        if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
+                            Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                     }
                 } else {
                     //单选模式直接返回
@@ -205,6 +210,11 @@ public class LFilePickerActivity extends AppCompatActivity {
      * 完成提交
      */
     private void chooseDone() {
+        //判断是否数量符合要求
+        if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
+            Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent();
         intent.putStringArrayListExtra("paths", mListNumbers);
         setResult(RESULT_OK, intent);
