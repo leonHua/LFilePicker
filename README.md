@@ -25,7 +25,7 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
 ### Quick to use
 #### 1. add reference
-    compile 'com.leon:lfilepickerlibrary:1.2.0'
+    compile 'com.leon:lfilepickerlibrary:1.3.0'
 or
 
     [Download aar](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary-release.aar)
