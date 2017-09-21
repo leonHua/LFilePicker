@@ -27,10 +27,10 @@
 ### 快速使用
 #### 1. 添加引用
 
-    compile 'com.leon:lfilepickerlibrary:1.2.0'
+    compile 'com.leon:lfilepickerlibrary:1.3.0'
 or
 
-    [下载aar文件](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary.aar?attname=)
+    [下载aar文件](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary-release.aar)
     
 #### 2. 添加文件读写权限
 
@@ -75,6 +75,7 @@ or
 | withMutilyMode(boolean isMutily)  |设置多选或单选模式|
 | withAddText(String text)          |设置多选模式选中文字|
 | withNotFoundBooks(String text)    |设置没有选中文件时的提示信息|
+| withMaxNum(int num)               |设置最大可选文件数量|
 #### 提供样式
 
  **withIconStyle(int style)** 取值模式：

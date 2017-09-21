@@ -25,10 +25,10 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
 ### Quick to use
 #### 1. add reference
-    compile 'com.leon:lfilepickerlibrary:1.2.0'
+    compile 'com.leon:lfilepickerlibrary:1.3.0'
 or
 
-    [下载aar文件](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary.aar?attname=)
+    [Download aar](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary-release.aar)
     
 #### 2. add permission
 
@@ -73,6 +73,7 @@ or
 | withMutilyMode(boolean isMutily)  |setting a multiple-choice or radio mode|
 | withAddText(String text)          |set the multiselect mode selected text|
 | withNotFoundBooks(String text)    |Set the prompt information when no file selected|
+| withMaxNum(int num)               |Set the max number of files|
 #### Provide style
 
  **withIconStyle(int style)** Value model：
