@@ -11,6 +11,8 @@
     <style name="ToolbarTheme" parent="LibraryAppTheme">
         <!-- 溢出菜单图标颜色-->
         <item name="colorControlNormal">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+
     </style>
     <style name="CheckBoxTheme" parent="LibraryAppTheme">
         <!-- 溢出菜单图标颜色-->

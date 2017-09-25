@@ -8,4 +8,6 @@
     <string name="Detail">detail</string>
     <string name="FileSize">size : </string>
     <string name="OutSize">Has reached the maximum number</string>
+    <string name="SelectAll">SelectAll</string>
+    <string name="Cancel">Cancel</string>
 </resources>

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +43,8 @@ public class LFilePickerActivity extends AppCompatActivity {
     private ParamEntity mParamEntity;
     private final int RESULTCODE = 1024;
     private LFileFilter mFilter;
+    private boolean mIsAllSelected = false;
+    private Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +123,10 @@ public class LFilePickerActivity extends AppCompatActivity {
                 mPath = tempPath;
                 mListFiles = getFileList(mPath);
                 mPathAdapter.setmListData(mListFiles);
-                mPathAdapter.notifyDataSetChanged();
+                mPathAdapter.updateAllSelelcted(false);
+                mIsAllSelected = false;
+                updateMenuTitle();
+                mBtnAddBook.setText(getString(R.string.Selected));
                 mRecylerView.scrollToPosition(0);
                 setShowPath(mPath);
                 //清除添加集合中数据
@@ -138,6 +145,10 @@ public class LFilePickerActivity extends AppCompatActivity {
                     if (mListFiles.get(position).isDirectory()) {
                         //如果当前是目录，则进入继续查看目录
                         chekInDirectory(position);
+                        mPathAdapter.updateAllSelelcted(false);
+                        mIsAllSelected = false;
+                        updateMenuTitle();
+                        mBtnAddBook.setText(getString(R.string.Selected));
                     } else {
                         //如果已经选择则取消，否则添加进来
                         if (mListNumbers.contains(mListFiles.get(position).getAbsolutePath())) {
@@ -263,4 +274,50 @@ public class LFilePickerActivity extends AppCompatActivity {
     private void setShowPath(String path) {
         mTvPath.setText(path);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+        mMenu = menu;
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_selecteall_cancel) {
+            //将当前目录下所有文件选中或者取消
+            mPathAdapter.updateAllSelelcted(!mIsAllSelected);
+            mIsAllSelected = !mIsAllSelected;
+            if (mIsAllSelected) {
+                for (File mListFile : mListFiles) {
+                    if (!mListFile.isDirectory()) {
+                        mListNumbers.add(mListFile.getAbsolutePath());
+                    }
+                    if (mParamEntity.getAddText() != null) {
+                        mBtnAddBook.setText(mParamEntity.getAddText() + "( " + mListNumbers.size() + " )");
+                    } else {
+                        mBtnAddBook.setText(getString(R.string.Selected) + "( " + mListNumbers.size() + " )");
+                    }
+                }
+            } else {
+                mListNumbers.clear();
+                mBtnAddBook.setText(getString(R.string.Selected));
+            }
+            updateMenuTitle();
+        }
+        return true;
+    }
+
+    /**
+     * 更新选项菜单文字
+     */
+    public void updateMenuTitle() {
+
+        if (mIsAllSelected) {
+            mMenu.getItem(0).setTitle(getString(R.string.Cancel));
+        } else {
+            mMenu.getItem(0).setTitle(getString(R.string.SelectAll));
+        }
+    }
+
 }

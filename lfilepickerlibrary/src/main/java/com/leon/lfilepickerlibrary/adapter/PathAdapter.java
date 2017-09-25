@@ -66,7 +66,7 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
         if (file.isFile()) {
             updateFileIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
-            holder.tvDetail.setText(mContext.getString(R.string.FileSize) +" "+ FileUtils.getReadableFileSize(file.length()));
+            holder.tvDetail.setText(mContext.getString(R.string.FileSize) + " " + FileUtils.getReadableFileSize(file.length()));
             holder.cbChoose.setVisibility(View.VISIBLE);
         } else {
             updateFloaderIconStyle(holder.ivType);
@@ -158,6 +158,19 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
 
     public void setmIconStyle(int mIconStyle) {
         this.mIconStyle = mIconStyle;
+    }
+
+    /**
+     * 设置是否全选
+     *
+     * @param isAllSelected
+     */
+    public void updateAllSelelcted(boolean isAllSelected) {
+
+        for (int i = 0; i < mCheckedFlags.length; i++) {
+            mCheckedFlags[i] = isAllSelected;
+        }
+        notifyDataSetChanged();
     }
 
     class PathViewHolder extends RecyclerView.ViewHolder {
