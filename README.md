@@ -8,6 +8,13 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - Support the fragments
  - custom title text and color
  - Internationalization (switch in both Chinese and English)
+ - Maximum quantity limitation (withMaxNum)
+ - All or all cancel
+
+### version update：
+ #### V1.4.0
+ - Maximum quantity limitation
+ - All or all cancel
 
 ### Running effect：
 #### dynamic effect（If the picture can't display properly, you can view the screenshot GIF files in the folder）
