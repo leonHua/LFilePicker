@@ -10,6 +10,13 @@
  - 支持Fragment启动
  - 自定义标题文字和颜色
  - 国际化（中英文切换）
+ - 最大数量限制
+ - 全选或者全部取消
+### 版本更新：
+ #### V1.4.0
+  - 最大数量限制 (withMaxNum)
+  - 全选或者全部取消
+  
 ### 运行效果：
 #### 动态操作（如果图片无法正常显示，可以查看screenshot文件夹中gif文件）
 ![](screenshot/操作.gif)
@@ -27,7 +34,7 @@
 ### 快速使用
 #### 1. 添加引用
 
-    compile 'com.leon:lfilepickerlibrary:1.3.0'
+    compile 'com.leon:lfilepickerlibrary:1.4.0'
 or
 
     [下载aar文件](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary-release.aar)
