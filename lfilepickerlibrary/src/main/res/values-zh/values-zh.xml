@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LFilePickerSample</string>
+    <string name="app_name">LFilePickerLibrary</string>
     <string name="NotFoundBooks">请选择导入的图书</string>
     <string name="NotFoundPath">SD 存储卡状态不可用</string>
     <string name="UpOneLevel">上一级</string>

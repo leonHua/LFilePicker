@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LFilePickerSample</string>
+    <string name="app_new_name">LFilePickerSample</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
