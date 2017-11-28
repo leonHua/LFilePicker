@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 .withTitle("文件选择")
                 .withIconStyle(mIconType)
                 .withBackIcon(mBackArrawType)
-                //.withMaxNum(2)
+                .withMutilyMode(false)
+                .withMaxNum(2)
                 .withNotFoundBooks("至少选择一个文件")
                 //.withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
