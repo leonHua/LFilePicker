@@ -12,6 +12,8 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - All or all cancel
 
 ### version update：
+ #### V1.5.0
+
  #### V1.4.0
  - Maximum quantity limitation
  - All or all cancel
@@ -32,11 +34,8 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
 ### Quick to use
 #### 1. add reference
-    compile 'com.leon:lfilepickerlibrary:1.4.0'
-or
+    compile 'com.leon:lfilepickerlibrary:1.5.0'
 
-    [Download aar](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary-release.aar)
-    
 #### 2. add permission
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

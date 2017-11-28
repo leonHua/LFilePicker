@@ -13,6 +13,9 @@
  - 最大数量限制
  - 全选或者全部取消
 ### 版本更新：
+ #### V1.5.0
+  - 全选校验，避免数据重复添加
+  - 单选模式下不在显示全选操作
  #### V1.4.0
   - 最大数量限制 (withMaxNum)
   - 全选或者全部取消
@@ -34,11 +37,8 @@
 ### 快速使用
 #### 1. 添加引用
 
-    compile 'com.leon:lfilepickerlibrary:1.4.0'
-or
+    compile 'com.leon:lfilepickerlibrary:1.5.0'
 
-    [下载aar文件](http://o9w936rbz.bkt.clouddn.com/blog/img/201704/1/lfilepickerlibrary-release.aar)
-    
 #### 2. 添加文件读写权限
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
