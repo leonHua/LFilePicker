@@ -278,8 +278,18 @@ public class LFilePickerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
-        mMenu = menu;
+        this.mMenu = menu;
+        updateOptionsMenu(menu);
         return true;
+    }
+
+    /**
+     * 更新选项菜单展示，如果是单选模式，不显示全选操作
+     *
+     * @param menu
+     */
+    private void updateOptionsMenu(Menu menu) {
+        mMenu.findItem(R.id.action_selecteall_cancel).setVisible(mParamEntity.isMutilyMode());
     }
 
     @Override
@@ -290,7 +300,8 @@ public class LFilePickerActivity extends AppCompatActivity {
             mIsAllSelected = !mIsAllSelected;
             if (mIsAllSelected) {
                 for (File mListFile : mListFiles) {
-                    if (!mListFile.isDirectory()) {
+                    //不包含再添加，避免重复添加
+                    if (!mListFile.isDirectory() && !mListNumbers.contains(mListFile.getAbsolutePath())) {
                         mListNumbers.add(mListFile.getAbsolutePath());
                     }
                     if (mParamEntity.getAddText() != null) {
