@@ -12,8 +12,11 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - All or all cancel
 
 ### version update：
+ #### V1.6.0
+  - Add folder path selection
  #### V1.5.0
-
+  - Select check to avoid duplication of data
+  - Single mode does not show full selection operation
  #### V1.4.0
  - Maximum quantity limitation
  - All or all cancel
@@ -34,7 +37,7 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
 ### Quick to use
 #### 1. add reference
-    compile 'com.leon:lfilepickerlibrary:1.5.0'
+    compile 'com.leon:lfilepickerlibrary:1.6.0'
 
 #### 2. add permission
 
@@ -55,9 +58,13 @@ This is a lightweight file selector, it can select files by retrieve phone direc
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUESTCODE_FROM_ACTIVITY) {
+               //If it is a file selection mode, you need to get the path collection of all the files selected
                 //List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);//Constant.RESULT_INFO == "paths"
                 List<String> list = data.getStringArrayListExtra("paths");
-                Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "selected " + list.size() , Toast.LENGTH_SHORT).show();
+                //If it is a folder selection mode, you need to get the folder path of your choice
+                String path = data.getStringExtra("path");
+                Toast.makeText(getApplicationContext(), "The selected path is:" + path, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -80,6 +87,7 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 | withAddText(String text)          |set the multiselect mode selected text|
 | withNotFoundBooks(String text)    |Set the prompt information when no file selected|
 | withMaxNum(int num)               |Set the max number of files|
+| withChooseMode(boolean chooseMode)|Set the folder selection mode, true (default) to select file, false to select folder|
 #### Provide style
 
  **withIconStyle(int style)** Value model：

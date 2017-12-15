@@ -12,7 +12,10 @@
  - 国际化（中英文切换）
  - 最大数量限制
  - 全选或者全部取消
+ - 文件夹路径选择
 ### 版本更新：
+ #### V1.6.0
+  - 增加文件夹路径选择
  #### V1.5.0
   - 全选校验，避免数据重复添加
   - 单选模式下不在显示全选操作
@@ -37,7 +40,7 @@
 ### 快速使用
 #### 1. 添加引用
 
-    compile 'com.leon:lfilepickerlibrary:1.5.0'
+    compile 'com.leon:lfilepickerlibrary:1.6.0'
 
 #### 2. 添加文件读写权限
 
@@ -58,9 +61,13 @@
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUESTCODE_FROM_ACTIVITY) {
+                //如果是文件选择模式，需要获取选择的所有文件的路径集合
                  //List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);//Constant.RESULT_INFO == "paths"
-                              List<String> list = data.getStringArrayListExtra("paths");
-                Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
+                  List<String> list = data.getStringArrayListExtra("paths");
+                  Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
+                  //如果是文件夹选择模式，需要获取选择的文件夹路径
+                   String path = data.getStringExtra("path");
+                   Toast.makeText(getApplicationContext(), "选中的路径为" + path, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -82,7 +89,8 @@
 | withMutilyMode(boolean isMutily)  |设置多选或单选模式|
 | withAddText(String text)          |设置多选模式选中文字|
 | withNotFoundBooks(String text)    |设置没有选中文件时的提示信息|
-| withMaxNum(int num)               |设置最大可选文件数量|
+| withMaxNum(int num)          |设置最大可选文件数量|
+| withChooseMode(boolean chooseMode)|设置文件夹选择模式,true(默认)为选择文件，false为选择文件夹|
 #### 提供样式
 
  **withIconStyle(int style)** 取值模式：
