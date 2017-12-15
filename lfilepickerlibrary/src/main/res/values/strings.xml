@@ -10,4 +10,6 @@
     <string name="OutSize">Has reached the maximum number</string>
     <string name="SelectAll">SelectAll</string>
     <string name="Cancel">Cancel</string>
+    <string name="OK">OK</string>
+    <string name="ChooseTip">Please select folders path</string>
 </resources>

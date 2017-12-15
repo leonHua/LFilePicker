@@ -11,4 +11,6 @@
     <string name="OutSize">已经达到最大选择数量</string>
     <string name="SelectAll">全选</string>
     <string name="Cancel">取消全选</string>
+    <string name="OK">确定</string>
+    <string name="ChooseTip">请选择文件夹</string>
 </resources>

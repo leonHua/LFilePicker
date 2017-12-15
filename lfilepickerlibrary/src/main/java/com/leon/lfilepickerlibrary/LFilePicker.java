@@ -23,6 +23,7 @@ public class LFilePicker {
     private int mBackStyle;
     private int mRequestCode;
     private boolean mMutilyMode = true;
+    private boolean mChooseMode = true;
     private String mAddText;
     private int mIconStyle;
     private String[] mFileTypes;
@@ -179,6 +180,17 @@ public class LFilePicker {
         return this;
     }
 
+    /**
+     * 设置选择模式，true为文件选择模式，false为文件夹选择模式，默认为true
+     *
+     * @param chooseMode
+     * @return
+     */
+    public LFilePicker withChooseMode(boolean chooseMode) {
+        this.mChooseMode = chooseMode;
+        return this;
+    }
+
     public void start() {
         if (mActivity == null && mFragment == null && mSupportFragment == null) {
             throw new RuntimeException("You must pass Activity or Fragment by withActivity or withFragment or withSupportFragment method");
@@ -222,6 +234,7 @@ public class LFilePicker {
         paramEntity.setFileTypes(mFileTypes);
         paramEntity.setNotFoundFiles(mNotFoundFiles);
         paramEntity.setMaxNum(mMaxNum);
+        paramEntity.setChooseMode(mChooseMode);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;

@@ -41,7 +41,6 @@ public class LFilePickerActivity extends AppCompatActivity {
     private PathAdapter mPathAdapter;
     private Toolbar mToolbar;
     private ParamEntity mParamEntity;
-    private final int RESULTCODE = 1024;
     private LFileFilter mFilter;
     private boolean mIsAllSelected = false;
     private Menu mMenu;
@@ -56,6 +55,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initToolbar();
+        updateAddButton();
         if (!checkSDState()) {
             Toast.makeText(this, R.string.NotFoundPath, Toast.LENGTH_SHORT).show();
             return;
@@ -70,7 +70,6 @@ public class LFilePickerActivity extends AppCompatActivity {
         mRecylerView.setAdapter(mPathAdapter);
         mRecylerView.setmEmptyView(mEmptyView);
         initListener();
-
     }
 
     /**
@@ -85,9 +84,6 @@ public class LFilePickerActivity extends AppCompatActivity {
         }
         if (mParamEntity.getBackgroundColor() != null) {
             mToolbar.setBackgroundColor(Color.parseColor(mParamEntity.getBackgroundColor()));
-        }
-        if (!mParamEntity.isMutilyMode()) {
-            mBtnAddBook.setVisibility(View.GONE);
         }
         switch (mParamEntity.getBackIcon()) {
             case Constant.BACKICON_STYLEONE:
@@ -106,6 +102,18 @@ public class LFilePickerActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void updateAddButton() {
+        if (!mParamEntity.isMutilyMode()) {
+            mBtnAddBook.setVisibility(View.GONE);
+        }
+        if (!mParamEntity.isChooseMode()) {
+            mBtnAddBook.setVisibility(View.VISIBLE);
+            mBtnAddBook.setText(getString(R.string.OK));
+            //文件夹模式默认为单选模式
+            mParamEntity.setMutilyMode(false);
+        }
     }
 
     /**
@@ -161,13 +169,11 @@ public class LFilePickerActivity extends AppCompatActivity {
                         } else {
                             mBtnAddBook.setText(getString(R.string.Selected) + "( " + mListNumbers.size() + " )");
                         }
-
                         //先判断是否达到最大数量，如果数量达到上限提示，否则继续添加
                         if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
                             Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
                             return;
                         }
-
                     }
                 } else {
                     //单选模式直接返回
@@ -175,8 +181,13 @@ public class LFilePickerActivity extends AppCompatActivity {
                         chekInDirectory(position);
                         return;
                     }
-                    mListNumbers.add(mListFiles.get(position).getAbsolutePath());
-                    chooseDone();
+                    if (mParamEntity.isChooseMode()) {
+                        //选择文件模式,需要添加文件路径，否则为文件夹模式，直接返回当前路径
+                        mListNumbers.add(mListFiles.get(position).getAbsolutePath());
+                        chooseDone();
+                    } else {
+                        Toast.makeText(LFilePickerActivity.this, R.string.ChooseTip, Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -185,14 +196,13 @@ public class LFilePickerActivity extends AppCompatActivity {
         mBtnAddBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mListNumbers.size() < 1) {
+                if (mParamEntity.isChooseMode() && mListNumbers.size() < 1) {
                     String info = mParamEntity.getNotFoundFiles();
                     if (TextUtils.isEmpty(info)) {
                         Toast.makeText(LFilePickerActivity.this, R.string.NotFoundBooks, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(LFilePickerActivity.this, info, Toast.LENGTH_SHORT).show();
                     }
-
                 } else {
                     //返回
                     chooseDone();
@@ -222,12 +232,15 @@ public class LFilePickerActivity extends AppCompatActivity {
      */
     private void chooseDone() {
         //判断是否数量符合要求
-        if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
-            Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
-            return;
+        if (mParamEntity.isChooseMode()) {
+            if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
+                Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
         Intent intent = new Intent();
         intent.putStringArrayListExtra("paths", mListNumbers);
+        intent.putExtra("path", mTvPath.getText().toString().trim());
         setResult(RESULT_OK, intent);
         this.finish();
     }

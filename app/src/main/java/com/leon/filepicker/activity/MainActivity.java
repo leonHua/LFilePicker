@@ -3,6 +3,7 @@ package com.leon.filepicker.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 .withMutilyMode(false)
                 .withMaxNum(2)
                 .withNotFoundBooks("至少选择一个文件")
+                .withChooseMode(false)//文件夹选择模式
                 //.withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
     }
@@ -97,7 +99,10 @@ public class MainActivity extends AppCompatActivity {
                 //for (String s : list) {
                 //    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 //}
-                Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
+                String path = data.getStringExtra("path");
+                Toast.makeText(getApplicationContext(), "选中的路径为" + path, Toast.LENGTH_SHORT).show();
+                Log.i("LeonFilePicker", path);
             }
         }
     }
