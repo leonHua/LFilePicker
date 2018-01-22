@@ -10,8 +10,13 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - Internationalization (switch in both Chinese and English)
  - Maximum quantity limitation (withMaxNum)
  - All or all cancel
+ - File size filtering
+ - Default path specified
 
 ### version update：
+ #### V1.7.0
+  - Adds an interface to specify the initial display path.
+  - The added interface can filter the file size, larger than the specified size, or less than the specified size.
  #### V1.6.0
   - Add folder path selection
  #### V1.5.0
@@ -37,7 +42,7 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
 ### Quick to use
 #### 1. add reference
-    compile 'com.leon:lfilepickerlibrary:1.6.0'
+    compile 'com.leon:lfilepickerlibrary:1.7.0'
 
 #### 2. add permission
 
@@ -49,6 +54,9 @@ This is a lightweight file selector, it can select files by retrieve phone direc
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(REQUESTCODE_FROM_ACTIVITY)
+                 .withStartPath("/storage/emulated/0/Download")
+                 .withIsGreater(false)
+                 .withFileSize(500 * 1024)
                 .start();
                 
 #### 4. accept the results of the return
@@ -88,6 +96,9 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 | withNotFoundBooks(String text)    |Set the prompt information when no file selected|
 | withMaxNum(int num)               |Set the max number of files|
 | withChooseMode(boolean chooseMode)|Set the folder selection mode, true (default) to select file, false to select folder|
+| withStartPath(String path)        |Set the initial display path|
+| withIsGreater(boolean isGreater)  |Set the filter mode,true(default) is greater than the specified size, or false less than the specified size|
+| withFileSize(long size)           |Set the size of the specified filter file, and if it is 500K, enter 500*1024|
 #### Provide style
 
  **withIconStyle(int style)** Value model：

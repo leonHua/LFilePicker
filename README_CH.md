@@ -13,7 +13,14 @@
  - 最大数量限制
  - 全选或者全部取消
  - 文件夹路径选择
+ - 文件大小过滤
+ - 默认路径指定
+
+
 ### 版本更新：
+ #### V1.7.0
+  - 增加接口指定初始显示路径
+  - 增加接口可以过滤文件大小，大于指定大小或者小于指定大小
  #### V1.6.0
   - 增加文件夹路径选择
  #### V1.5.0
@@ -40,7 +47,7 @@
 ### 快速使用
 #### 1. 添加引用
 
-    compile 'com.leon:lfilepickerlibrary:1.6.0'
+    compile 'com.leon:lfilepickerlibrary:1.7.0'
 
 #### 2. 添加文件读写权限
 
@@ -52,6 +59,9 @@
     new LFilePicker()
                 .withActivity(MainActivity.this)
                 .withRequestCode(REQUESTCODE_FROM_ACTIVITY)
+                .withStartPath("/storage/emulated/0/Download")//指定初始显示路径
+                .withIsGreater(false)//过滤文件大小 小于指定大小的文件
+                .withFileSize(500 * 1024)//指定文件大小为500K
                 .start();
                 
 #### 4. 接收返回结果
@@ -91,6 +101,9 @@
 | withNotFoundBooks(String text)    |设置没有选中文件时的提示信息|
 | withMaxNum(int num)          |设置最大可选文件数量|
 | withChooseMode(boolean chooseMode)|设置文件夹选择模式,true(默认)为选择文件，false为选择文件夹|
+| withStartPath(String path)        |设置初始显示路径|
+| withIsGreater(boolean isGreater)  |设置过滤方式,true(默认)为大于指定大小，false小于指定大小|
+| withFileSize(long size)           |设置指定过滤文件大小，如果是500K则输入500*1024|
 #### 提供样式
 
  **withIconStyle(int style)** 取值模式：
