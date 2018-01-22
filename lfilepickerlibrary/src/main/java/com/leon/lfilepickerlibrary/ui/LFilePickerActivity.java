@@ -21,6 +21,7 @@ import com.leon.lfilepickerlibrary.filter.LFileFilter;
 import com.leon.lfilepickerlibrary.model.ParamEntity;
 import com.leon.lfilepickerlibrary.utils.Constant;
 import com.leon.lfilepickerlibrary.utils.FileUtils;
+import com.leon.lfilepickerlibrary.utils.StringUtils;
 import com.leon.lfilepickerlibrary.widget.EmptyRecyclerView;
 
 import java.io.File;
@@ -60,7 +61,11 @@ public class LFilePickerActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.NotFoundPath, Toast.LENGTH_SHORT).show();
             return;
         }
-        mPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        mPath = mParamEntity.getPath();
+        if (StringUtils.isEmpty(mPath)) {
+            //如果没有指定路径，则使用默认路径
+            mPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        }
         mTvPath.setText(mPath);
         mFilter = new LFileFilter(mParamEntity.getFileTypes());
         mListFiles = getFileList(mPath);

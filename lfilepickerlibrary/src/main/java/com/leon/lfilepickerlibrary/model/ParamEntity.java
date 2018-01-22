@@ -18,6 +18,7 @@ public class ParamEntity implements Serializable {
     private String notFoundFiles;
     private int maxNum;
     private boolean chooseMode = true;
+    private String path;
 
     public String getTitle() {
         return title;
@@ -105,5 +106,13 @@ public class ParamEntity implements Serializable {
 
     public void setChooseMode(boolean chooseMode) {
         this.chooseMode = chooseMode;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

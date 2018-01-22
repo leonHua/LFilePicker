@@ -29,6 +29,7 @@ public class LFilePicker {
     private String[] mFileTypes;
     private String mNotFoundFiles;
     private int mMaxNum;
+    private String mStartPath;
 
     /**
      * 绑定Activity
@@ -179,6 +180,16 @@ public class LFilePicker {
         this.mMaxNum = num;
         return this;
     }
+    /**
+     * 设置初始显示路径
+     *
+     * @param path
+     * @return
+     */
+    public LFilePicker withStartPath(String path) {
+        this.mStartPath = path;
+        return this;
+    }
 
     /**
      * 设置选择模式，true为文件选择模式，false为文件夹选择模式，默认为true
@@ -235,6 +246,7 @@ public class LFilePicker {
         paramEntity.setNotFoundFiles(mNotFoundFiles);
         paramEntity.setMaxNum(mMaxNum);
         paramEntity.setChooseMode(mChooseMode);
+        paramEntity.setPath(mStartPath);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;
