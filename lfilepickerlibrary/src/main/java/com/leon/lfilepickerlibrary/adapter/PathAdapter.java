@@ -39,12 +39,16 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     private boolean[] mCheckedFlags;
     private boolean mMutilyMode;
     private int mIconStyle;
+    private boolean mIsGreater;
+    private long mFileSize;
 
-    public PathAdapter(List<File> mListData, Context mContext, FileFilter mFileFilter, boolean mMutilyMode) {
+    public PathAdapter(List<File> mListData, Context mContext, FileFilter mFileFilter, boolean mMutilyMode, boolean mIsGreater, long mFileSize) {
         this.mListData = mListData;
         this.mContext = mContext;
         this.mFileFilter = mFileFilter;
         this.mMutilyMode = mMutilyMode;
+        this.mIsGreater = mIsGreater;
+        this.mFileSize = mFileSize;
         mCheckedFlags = new boolean[mListData.size()];
     }
 
@@ -71,11 +75,12 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
         } else {
             updateFloaderIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
-            File[] files = file.listFiles(mFileFilter);
+            //文件大小过滤
+            List files = FileUtils.getFileList(file.getAbsolutePath(), mFileFilter, mIsGreater, mFileSize);
             if (files == null) {
                 holder.tvDetail.setText("0 " + mContext.getString(R.string.LItem));
             } else {
-                holder.tvDetail.setText(files.length + " " + mContext.getString(R.string.LItem));
+                holder.tvDetail.setText(files.size() + " " + mContext.getString(R.string.LItem));
             }
             holder.cbChoose.setVisibility(View.GONE);
         }

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.leon.lfilepickerlibrary.widget.EmptyRecyclerView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class LFilePickerActivity extends AppCompatActivity {
@@ -68,8 +70,8 @@ public class LFilePickerActivity extends AppCompatActivity {
         }
         mTvPath.setText(mPath);
         mFilter = new LFileFilter(mParamEntity.getFileTypes());
-        mListFiles = getFileList(mPath);
-        mPathAdapter = new PathAdapter(mListFiles, this, mFilter, mParamEntity.isMutilyMode());
+        mListFiles = FileUtils.getFileList(mPath, mFilter, mParamEntity.isGreater(), mParamEntity.getFileSize());
+        mPathAdapter = new PathAdapter(mListFiles, this, mFilter, mParamEntity.isMutilyMode(), mParamEntity.isGreater(), mParamEntity.getFileSize());
         mRecylerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mPathAdapter.setmIconStyle(mParamEntity.getIconStyle());
         mRecylerView.setAdapter(mPathAdapter);
@@ -134,7 +136,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                     return;
                 }
                 mPath = tempPath;
-                mListFiles = getFileList(mPath);
+                mListFiles = FileUtils.getFileList(mPath, mFilter, mParamEntity.isGreater(), mParamEntity.getFileSize());
                 mPathAdapter.setmListData(mListFiles);
                 mPathAdapter.updateAllSelelcted(false);
                 mIsAllSelected = false;
@@ -226,7 +228,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         mPath = mListFiles.get(position).getAbsolutePath();
         setShowPath(mPath);
         //更新数据源
-        mListFiles = getFileList(mPath);
+        mListFiles = FileUtils.getFileList(mPath, mFilter, mParamEntity.isGreater(), mParamEntity.getFileSize());
         mPathAdapter.setmListData(mListFiles);
         mPathAdapter.notifyDataSetChanged();
         mRecylerView.scrollToPosition(0);
@@ -248,18 +250,6 @@ public class LFilePickerActivity extends AppCompatActivity {
         intent.putExtra("path", mTvPath.getText().toString().trim());
         setResult(RESULT_OK, intent);
         this.finish();
-    }
-
-    /**
-     * 根据地址获取当前地址下的所有目录和文件，并且排序
-     *
-     * @param path
-     * @return List<File>
-     */
-    private List<File> getFileList(String path) {
-        File file = new File(path);
-        List<File> list = FileUtils.getFileListByDirPath(path, mFilter);
-        return list;
     }
 
     /**

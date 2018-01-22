@@ -30,6 +30,8 @@ public class LFilePicker {
     private String mNotFoundFiles;
     private int mMaxNum;
     private String mStartPath;
+    private boolean mIsGreater = true;//是否大于
+    private long mFileSize;
 
     /**
      * 绑定Activity
@@ -180,6 +182,7 @@ public class LFilePicker {
         this.mMaxNum = num;
         return this;
     }
+
     /**
      * 设置初始显示路径
      *
@@ -199,6 +202,28 @@ public class LFilePicker {
      */
     public LFilePicker withChooseMode(boolean chooseMode) {
         this.mChooseMode = chooseMode;
+        return this;
+    }
+
+    /**
+     * 设置文件大小过滤方式：大于指定大小或者小于指定大小
+     *
+     * @param isGreater true：大于 ；false：小于，同时包含指定大小在内
+     * @return
+     */
+    public LFilePicker withIsGreater(boolean isGreater) {
+        this.mIsGreater = isGreater;
+        return this;
+    }
+
+    /**
+     * 设置过滤文件大小
+     *
+     * @param fileSize
+     * @return
+     */
+    public LFilePicker withFileSize(long fileSize) {
+        this.mFileSize = fileSize;
         return this;
     }
 
@@ -247,6 +272,8 @@ public class LFilePicker {
         paramEntity.setMaxNum(mMaxNum);
         paramEntity.setChooseMode(mChooseMode);
         paramEntity.setPath(mStartPath);
+        paramEntity.setFileSize(mFileSize);
+        paramEntity.setGreater(mIsGreater);
         Bundle bundle = new Bundle();
         bundle.putSerializable("param", paramEntity);
         return bundle;

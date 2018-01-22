@@ -19,6 +19,8 @@ public class ParamEntity implements Serializable {
     private int maxNum;
     private boolean chooseMode = true;
     private String path;
+    private long fileSize;
+    private boolean isGreater;
 
     public String getTitle() {
         return title;
@@ -114,5 +116,21 @@ public class ParamEntity implements Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public boolean isGreater() {
+        return isGreater;
+    }
+
+    public void setGreater(boolean greater) {
+        isGreater = greater;
     }
 }
