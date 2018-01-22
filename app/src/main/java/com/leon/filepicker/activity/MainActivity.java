@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
                 .withBackIcon(mBackArrawType)
                 .withMutilyMode(false)
                 .withMaxNum(2)
-                .withStartPath("/storage/emulated/0/Download")
+                .withStartPath("/storage/emulated/0/Download")//指定初始显示路径
                 .withNotFoundBooks("至少选择一个文件")
-                .withIsGreater(false)
-                .withFileSize(500 * 1024)
+                .withIsGreater(false)//过滤文件大小 小于指定大小的文件
+                .withFileSize(500 * 1024)//指定文件大小为500K
                 .withChooseMode(false)//文件夹选择模式
                 //.withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
