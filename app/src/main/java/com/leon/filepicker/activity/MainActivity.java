@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 .withMaxNum(2)
                 .withStartPath("/storage/emulated/0/Download")
                 .withNotFoundBooks("至少选择一个文件")
+                .withIsGreater(false)
+                .withFileSize(500 * 1024)
                 .withChooseMode(false)//文件夹选择模式
                 //.withFileFilter(new String[]{"txt", "png", "docx"})
                 .start();
