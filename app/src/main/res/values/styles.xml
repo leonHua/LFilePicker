@@ -1,11 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarSize">36dp</item>
+        <item name="navigationIcon">@mipmap/lfile_back2</item><!--返回icon-->
+
+        <!-- 溢出菜单图标颜色-->
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <!--toolbar 上title的样式-->
+    <style name="TextStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">#ff0fff</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="RadioStyle">
@@ -20,9 +32,5 @@
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:orientation">horizontal</item>
     </style>
-    <!--toolbar 上title的样式-->
-    <style name="TextStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textColor">#00ff00</item>
-        <item name="android:textSize">14sp</item>
-    </style>
+
 </resources>

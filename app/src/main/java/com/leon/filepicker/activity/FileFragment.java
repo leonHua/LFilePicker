@@ -53,6 +53,8 @@ public class FileFragment extends Fragment {
             public void onClick(View v) {
                 new LFilePicker().withSupportFragment(mFragment)
                         .withRequestCode(Consant.REQUESTCODE_FROM_FRAGMENT)
+                        .withTitleStyle(R.style.TextStyle)
+                        .withTheme(R.style.AppTheme)
                         .withTitle("Open From Fragment")
                         .start();
             }

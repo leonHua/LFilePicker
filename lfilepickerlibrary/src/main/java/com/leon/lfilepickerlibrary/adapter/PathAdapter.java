@@ -54,7 +54,7 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
 
     @Override
     public PathViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(mContext, R.layout.listitem, null);
+        View view = View.inflate(mContext, R.layout.lfile_listitem, null);
         PathViewHolder pathViewHolder = new PathViewHolder(view);
         return pathViewHolder;
     }
@@ -117,13 +117,13 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     private void updateFloaderIconStyle(ImageView imageView) {
         switch (mIconStyle) {
             case Constant.ICON_STYLE_BLUE:
-                imageView.setBackgroundResource(R.mipmap.folder_style_blue);
+                imageView.setBackgroundResource(R.mipmap.lfile_folder_style_blue);
                 break;
             case Constant.ICON_STYLE_GREEN:
-                imageView.setBackgroundResource(R.mipmap.folder_style_green);
+                imageView.setBackgroundResource(R.mipmap.lfile_folder_style_green);
                 break;
             case Constant.ICON_STYLE_YELLOW:
-                imageView.setBackgroundResource(R.mipmap.folder_style_yellow);
+                imageView.setBackgroundResource(R.mipmap.lfile_folder_style_yellow);
                 break;
         }
     }
@@ -131,13 +131,13 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     private void updateFileIconStyle(ImageView imageView) {
         switch (mIconStyle) {
             case Constant.ICON_STYLE_BLUE:
-                imageView.setBackgroundResource(R.mipmap.file_style_blue);
+                imageView.setBackgroundResource(R.mipmap.lfile_file_style_blue);
                 break;
             case Constant.ICON_STYLE_GREEN:
-                imageView.setBackgroundResource(R.mipmap.file_style_green);
+                imageView.setBackgroundResource(R.mipmap.lfile_file_style_green);
                 break;
             case Constant.ICON_STYLE_YELLOW:
-                imageView.setBackgroundResource(R.mipmap.file_style_yellow);
+                imageView.setBackgroundResource(R.mipmap.lfile_file_style_yellow);
                 break;
         }
     }

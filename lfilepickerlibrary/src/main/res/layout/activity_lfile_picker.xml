@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/lfile_white"
     tools:context=".ui.LFilePickerActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/defaultColor"
-        android:theme="@style/ToolbarTheme" />
-
+        android:background="?attr/colorPrimary"
+        android:minHeight="?android:attr/actionBarSize"
+        app:navigationIcon="?attr/navigationIcon" />
     <LinearLayout
         android:id="@+id/layout_path"
         android:layout_width="match_parent"
@@ -39,9 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/back_bg"
+            android:background="@drawable/lfile_back_bg"
             android:clickable="true"
-            android:drawableLeft="@mipmap/back"
+            android:drawableLeft="@mipmap/lfile_up"
             android:drawablePadding="4dp"
             android:gravity="center"
             android:paddingLeft="8dp"
@@ -54,9 +54,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_bg"
+        android:background="@drawable/lfile_btn_bg"
         android:text="@string/lfile_Selected"
-        android:textColor="@color/white"
+        android:textColor="@color/lfile_white"
         android:textSize="18sp" />
 
     <com.leon.lfilepickerlibrary.widget.EmptyRecyclerView
@@ -68,7 +68,7 @@
 
     <include
         android:id="@+id/empty_view"
-        layout="@layout/emptyview"
+        layout="@layout/lfile_emptyview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_path" />

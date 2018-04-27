@@ -20,7 +20,8 @@ public class LFilePicker {
     private android.support.v4.app.Fragment mSupportFragment;
     private String mTitle;
     private String mTitleColor;
-    private int mTitleStyle;
+    private int theme = R.style.LFileTheme;
+    private int mTitleStyle = R.style.LFileToolbarTextStyle;
     private String mBackgroundColor;
     private int mBackStyle;
     private int mRequestCode;
@@ -89,6 +90,17 @@ public class LFilePicker {
     @Deprecated
     public LFilePicker withTitleColor(String color) {
         this.mTitleColor = color;
+        return this;
+    }
+
+    /**
+     * 设置主题
+     *
+     * @param theme
+     * @return
+     */
+    public LFilePicker withTheme(@StyleRes int theme) {
+        this.theme = theme;
         return this;
     }
 
@@ -275,6 +287,7 @@ public class LFilePicker {
     private Bundle getBundle() {
         ParamEntity paramEntity = new ParamEntity();
         paramEntity.setTitle(mTitle);
+        paramEntity.setTheme(theme);
         paramEntity.setTitleColor(mTitleColor);
         paramEntity.setTitleStyle(mTitleStyle);
         paramEntity.setBackgroundColor(mBackgroundColor);

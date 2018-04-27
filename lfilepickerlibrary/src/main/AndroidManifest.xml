@@ -8,8 +8,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.LFilePickerActivity"
-            android:theme="@style/LibraryAppTheme"/>
+        <activity android:name=".ui.LFilePickerActivity" />
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"

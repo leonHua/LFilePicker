@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +26,6 @@ import com.leon.lfilepickerlibrary.widget.EmptyRecyclerView;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class LFilePickerActivity extends AppCompatActivity {
@@ -50,9 +48,10 @@ public class LFilePickerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mParamEntity = (ParamEntity) getIntent().getExtras().getSerializable("param");
+        setTheme(mParamEntity.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lfile_picker);
-        mParamEntity = (ParamEntity) getIntent().getExtras().getSerializable("param");
         initView();
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -95,17 +94,17 @@ public class LFilePickerActivity extends AppCompatActivity {
         if (mParamEntity.getBackgroundColor() != null) {
             mToolbar.setBackgroundColor(Color.parseColor(mParamEntity.getBackgroundColor()));
         }
-        switch (mParamEntity.getBackIcon()) {
-            case Constant.BACKICON_STYLEONE:
-                mToolbar.setNavigationIcon(R.mipmap.backincostyleone);
-                break;
-            case Constant.BACKICON_STYLETWO:
-                mToolbar.setNavigationIcon(R.mipmap.backincostyletwo);
-                break;
-            case Constant.BACKICON_STYLETHREE:
-                //默认风格
-                break;
-        }
+//        switch (mParamEntity.getBackIcon()) {
+//            case Constant.BACKICON_STYLEONE:
+//                mToolbar.setNavigationIcon(R.mipmap.lfile_back1);
+//                break;
+//            case Constant.BACKICON_STYLETWO:
+//                mToolbar.setNavigationIcon(R.mipmap.lfile_back2);
+//                break;
+//            case Constant.BACKICON_STYLETHREE:
+//                //默认风格
+//                break;
+//        }
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

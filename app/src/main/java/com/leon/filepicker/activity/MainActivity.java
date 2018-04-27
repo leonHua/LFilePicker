@@ -77,10 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .withTitle("文件选择")
                 .withIconStyle(mIconType)
-                .withBackIcon(mBackArrawType)
                 .withMutilyMode(false)
                 .withMaxNum(2)
-                .withTitleStyle(R.style.TextStyle)
                 .withStartPath("/storage/emulated/0/Download")//指定初始显示路径
                 .withNotFoundBooks("至少选择一个文件")
                 .withIsGreater(false)//过滤文件大小 小于指定大小的文件

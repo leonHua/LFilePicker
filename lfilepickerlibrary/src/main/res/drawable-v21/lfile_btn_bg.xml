@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-        android:color="@color/lightgray">
+        android:color="@color/lfile_lightgray">
 
     <item
-        android:drawable="@color/defaultColor"
+        android:drawable="@color/lfile_defaultColor"
         android:state_pressed="false"/>
 </ripple>

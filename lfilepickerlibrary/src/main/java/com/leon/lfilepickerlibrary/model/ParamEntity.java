@@ -11,7 +11,8 @@ import java.io.Serializable;
 public class ParamEntity implements Serializable {
     private String title;
     private String titleColor;
-    private int titleStyle = R.style.ToolbarTextStyle_dark;
+    private int titleStyle ;
+    private int theme ;
     private String backgroundColor;
     private int backIcon;
     private boolean mutilyMode;
@@ -41,6 +42,14 @@ public class ParamEntity implements Serializable {
     @Deprecated
     public void setTitleColor(String titleColor) {
         this.titleColor = titleColor;
+    }
+
+    public int getTheme() {
+        return theme;
+    }
+
+    public void setTheme(int theme) {
+        this.theme = theme;
     }
 
     public int getTitleStyle() {
