@@ -70,7 +70,7 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
         if (file.isFile()) {
             updateFileIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
-            holder.tvDetail.setText(mContext.getString(R.string.FileSize) + " " + FileUtils.getReadableFileSize(file.length()));
+            holder.tvDetail.setText(mContext.getString(R.string.lfile_FileSize) + " " + FileUtils.getReadableFileSize(file.length()));
             holder.cbChoose.setVisibility(View.VISIBLE);
         } else {
             updateFloaderIconStyle(holder.ivType);
@@ -78,9 +78,9 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
             //文件大小过滤
             List files = FileUtils.getFileList(file.getAbsolutePath(), mFileFilter, mIsGreater, mFileSize);
             if (files == null) {
-                holder.tvDetail.setText("0 " + mContext.getString(R.string.LItem));
+                holder.tvDetail.setText("0 " + mContext.getString(R.string.lfile_LItem));
             } else {
-                holder.tvDetail.setText(files.size() + " " + mContext.getString(R.string.LItem));
+                holder.tvDetail.setText(files.size() + " " + mContext.getString(R.string.lfile_LItem));
             }
             holder.cbChoose.setVisibility(View.GONE);
         }

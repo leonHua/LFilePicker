@@ -49,7 +49,7 @@
             android:drawableLeft="@mipmap/back"
             android:gravity="center"
             android:padding="16dp"
-            android:text="@string/UpOneLevel"/>
+            android:text="@string/lfile_UpOneLevel"/>
     </LinearLayout>
 
     <Button
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/btn_bg"
-        android:text="@string/Selected"
+        android:text="@string/lfile_Selected"
         android:textColor="@color/white"
         android:textSize="18sp"/>
 
