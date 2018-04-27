@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,17 +11,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:theme="@style/ToolbarTheme"
         android:background="@color/defaultColor"
-        app:titleTextColor="@color/white"
-        app:title="txt">
-    </android.support.v7.widget.Toolbar>
+        android:theme="@style/ToolbarTheme" />
 
     <LinearLayout
         android:id="@+id/layout_path"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="44dp"
+        android:layout_below="@id/toolbar"
         android:background="#dddddd"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -30,26 +26,27 @@
         <TextView
             android:id="@+id/tv_path"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:ellipsize="middle"
-            android:gravity="left"
-            android:maxLines="1"
-            android:padding="6dp"
-            android:text=""
-            android:textSize="14sp"/>
+            android:gravity="left|center"
+            android:singleLine="true"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
             android:background="@drawable/back_bg"
             android:clickable="true"
             android:drawableLeft="@mipmap/back"
+            android:drawablePadding="4dp"
             android:gravity="center"
-            android:padding="16dp"
-            android:text="@string/lfile_UpOneLevel"/>
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/lfile_UpOneLevel" />
     </LinearLayout>
 
     <Button
@@ -60,20 +57,20 @@
         android:background="@drawable/btn_bg"
         android:text="@string/lfile_Selected"
         android:textColor="@color/white"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <com.leon.lfilepickerlibrary.widget.EmptyRecyclerView
         android:id="@+id/recylerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btn_addbook"
-        android:layout_below="@id/layout_path"/>
+        android:layout_below="@id/layout_path" />
 
     <include
         android:id="@+id/empty_view"
         layout="@layout/emptyview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/layout_path"/>
+        android:layout_below="@id/layout_path" />
 
 </RelativeLayout>

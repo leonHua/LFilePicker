@@ -1,5 +1,7 @@
 package com.leon.lfilepickerlibrary.model;
 
+import com.leon.lfilepickerlibrary.R;
+
 import java.io.Serializable;
 
 /**
@@ -9,6 +11,7 @@ import java.io.Serializable;
 public class ParamEntity implements Serializable {
     private String title;
     private String titleColor;
+    private int titleStyle = R.style.ToolbarTextStyle_dark;
     private String backgroundColor;
     private int backIcon;
     private boolean mutilyMode;
@@ -30,12 +33,22 @@ public class ParamEntity implements Serializable {
         this.title = title;
     }
 
+    @Deprecated
     public String getTitleColor() {
         return titleColor;
     }
 
+    @Deprecated
     public void setTitleColor(String titleColor) {
         this.titleColor = titleColor;
+    }
+
+    public int getTitleStyle() {
+        return titleStyle;
+    }
+
+    public void setTitleStyle(int titleStyle) {
+        this.titleStyle = titleStyle;
     }
 
     public String getBackgroundColor() {

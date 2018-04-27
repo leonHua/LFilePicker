@@ -86,6 +86,9 @@ public class LFilePickerActivity extends AppCompatActivity {
         if (mParamEntity.getTitle() != null) {
             mToolbar.setTitle(mParamEntity.getTitle());
         }
+        if (mParamEntity.getTitleStyle() != 0) {
+            mToolbar.setTitleTextAppearance(this, mParamEntity.getTitleStyle());
+        }
         if (mParamEntity.getTitleColor() != null) {
             mToolbar.setTitleTextColor(Color.parseColor(mParamEntity.getTitleColor())); //设置标题颜色
         }

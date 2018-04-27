@@ -20,5 +20,9 @@
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:orientation">horizontal</item>
     </style>
-
+    <!--toolbar 上title的样式-->
+    <style name="TextStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">#00ff00</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>
