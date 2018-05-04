@@ -54,7 +54,7 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
 
     @Override
     public PathViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(mContext, R.layout.listitem, null);
+        View view = View.inflate(mContext, R.layout.lfile_listitem, null);
         PathViewHolder pathViewHolder = new PathViewHolder(view);
         return pathViewHolder;
     }
@@ -70,7 +70,7 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
         if (file.isFile()) {
             updateFileIconStyle(holder.ivType);
             holder.tvName.setText(file.getName());
-            holder.tvDetail.setText(mContext.getString(R.string.FileSize) + " " + FileUtils.getReadableFileSize(file.length()));
+            holder.tvDetail.setText(mContext.getString(R.string.lfile_FileSize) + " " + FileUtils.getReadableFileSize(file.length()));
             holder.cbChoose.setVisibility(View.VISIBLE);
         } else {
             updateFloaderIconStyle(holder.ivType);
@@ -78,9 +78,9 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
             //文件大小过滤
             List files = FileUtils.getFileList(file.getAbsolutePath(), mFileFilter, mIsGreater, mFileSize);
             if (files == null) {
-                holder.tvDetail.setText("0 " + mContext.getString(R.string.LItem));
+                holder.tvDetail.setText("0 " + mContext.getString(R.string.lfile_LItem));
             } else {
-                holder.tvDetail.setText(files.size() + " " + mContext.getString(R.string.LItem));
+                holder.tvDetail.setText(files.size() + " " + mContext.getString(R.string.lfile_LItem));
             }
             holder.cbChoose.setVisibility(View.GONE);
         }
@@ -117,13 +117,13 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     private void updateFloaderIconStyle(ImageView imageView) {
         switch (mIconStyle) {
             case Constant.ICON_STYLE_BLUE:
-                imageView.setBackgroundResource(R.mipmap.folder_style_blue);
+                imageView.setBackgroundResource(R.mipmap.lfile_folder_style_blue);
                 break;
             case Constant.ICON_STYLE_GREEN:
-                imageView.setBackgroundResource(R.mipmap.folder_style_green);
+                imageView.setBackgroundResource(R.mipmap.lfile_folder_style_green);
                 break;
             case Constant.ICON_STYLE_YELLOW:
-                imageView.setBackgroundResource(R.mipmap.folder_style_yellow);
+                imageView.setBackgroundResource(R.mipmap.lfile_folder_style_yellow);
                 break;
         }
     }
@@ -131,13 +131,13 @@ public class PathAdapter extends RecyclerView.Adapter<PathAdapter.PathViewHolder
     private void updateFileIconStyle(ImageView imageView) {
         switch (mIconStyle) {
             case Constant.ICON_STYLE_BLUE:
-                imageView.setBackgroundResource(R.mipmap.file_style_blue);
+                imageView.setBackgroundResource(R.mipmap.lfile_file_style_blue);
                 break;
             case Constant.ICON_STYLE_GREEN:
-                imageView.setBackgroundResource(R.mipmap.file_style_green);
+                imageView.setBackgroundResource(R.mipmap.lfile_file_style_green);
                 break;
             case Constant.ICON_STYLE_YELLOW:
-                imageView.setBackgroundResource(R.mipmap.file_style_yellow);
+                imageView.setBackgroundResource(R.mipmap.lfile_file_style_yellow);
                 break;
         }
     }

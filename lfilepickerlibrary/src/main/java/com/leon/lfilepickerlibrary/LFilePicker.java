@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.StyleRes;
 
 import com.leon.lfilepickerlibrary.model.ParamEntity;
 import com.leon.lfilepickerlibrary.ui.LFilePickerActivity;
@@ -19,6 +20,8 @@ public class LFilePicker {
     private android.support.v4.app.Fragment mSupportFragment;
     private String mTitle;
     private String mTitleColor;
+    private int theme = R.style.LFileTheme;
+    private int mTitleStyle = R.style.LFileToolbarTextStyle;
     private String mBackgroundColor;
     private int mBackStyle;
     private int mRequestCode;
@@ -84,8 +87,31 @@ public class LFilePicker {
      * @param color
      * @return
      */
+    @Deprecated
     public LFilePicker withTitleColor(String color) {
         this.mTitleColor = color;
+        return this;
+    }
+
+    /**
+     * 设置主题
+     *
+     * @param theme
+     * @return
+     */
+    public LFilePicker withTheme(@StyleRes int theme) {
+        this.theme = theme;
+        return this;
+    }
+
+    /**
+     * 设置标题的颜色和字体大小
+     *
+     * @param style
+     * @return
+     */
+    public LFilePicker withTitleStyle(@StyleRes int style) {
+        this.mTitleStyle = style;
         return this;
     }
 
@@ -261,7 +287,9 @@ public class LFilePicker {
     private Bundle getBundle() {
         ParamEntity paramEntity = new ParamEntity();
         paramEntity.setTitle(mTitle);
+        paramEntity.setTheme(theme);
         paramEntity.setTitleColor(mTitleColor);
+        paramEntity.setTitleStyle(mTitleStyle);
         paramEntity.setBackgroundColor(mBackgroundColor);
         paramEntity.setBackIcon(mBackStyle);
         paramEntity.setMutilyMode(mMutilyMode);
