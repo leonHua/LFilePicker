@@ -14,6 +14,7 @@ This is a lightweight file selector, it can select files by retrieve phone direc
  - Default path specified
 
 ### version update：
+ #### V1.8.0
  #### V1.7.0
   - Adds an interface to specify the initial display path.
   - The added interface can filter the file size, larger than the specified size, or less than the specified size.
@@ -42,7 +43,7 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 
 ### Quick to use
 #### 1. add reference
-    compile 'com.leon:lfilepickerlibrary:1.7.0'
+    compile 'com.leon:lfilepickerlibrary:1.8.0'
 
 #### 2. add permission
 
