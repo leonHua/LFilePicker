@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/layout_item_root"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:clickable="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/item_bg_selector"
@@ -14,7 +14,7 @@
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_centerVertical="true"
-        android:background="@mipmap/file_style_green"/>
+        android:background="@mipmap/lfile_file_style_green"/>
 
     <CheckBox
         android:id="@+id/cb_choose"

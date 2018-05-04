@@ -22,5 +22,5 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_above="@id/tv_empty"
-        android:background="@mipmap/emptyimg"/>
+        android:background="@mipmap/lfile_emptyimg"/>
 </RelativeLayout>

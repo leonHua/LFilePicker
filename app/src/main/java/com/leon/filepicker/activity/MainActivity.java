@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 .withRequestCode(Consant.REQUESTCODE_FROM_ACTIVITY)
                 .withTitle("文件选择")
                 .withIconStyle(mIconType)
-                .withBackIcon(mBackArrawType)
                 .withMutilyMode(false)
                 .withMaxNum(2)
                 .withStartPath("/storage/emulated/0/Download")//指定初始显示路径

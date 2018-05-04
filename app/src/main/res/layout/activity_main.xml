@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/lfile_white"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".activity.MainActivity">
@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightgray">
+        android:background="@color/lfile_lightgray">
 
         <TextView
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/lightgray">
+        android:background="@color/lfile_lightgray">
 
         <TextView
             android:layout_width="match_parent"

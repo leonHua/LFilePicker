@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +26,6 @@ import com.leon.lfilepickerlibrary.widget.EmptyRecyclerView;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class LFilePickerActivity extends AppCompatActivity {
@@ -50,9 +48,10 @@ public class LFilePickerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mParamEntity = (ParamEntity) getIntent().getExtras().getSerializable("param");
+        setTheme(mParamEntity.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lfile_picker);
-        mParamEntity = (ParamEntity) getIntent().getExtras().getSerializable("param");
         initView();
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -60,7 +59,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         initToolbar();
         updateAddButton();
         if (!checkSDState()) {
-            Toast.makeText(this, R.string.NotFoundPath, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.lfile_NotFoundPath, Toast.LENGTH_SHORT).show();
             return;
         }
         mPath = mParamEntity.getPath();
@@ -86,23 +85,26 @@ public class LFilePickerActivity extends AppCompatActivity {
         if (mParamEntity.getTitle() != null) {
             mToolbar.setTitle(mParamEntity.getTitle());
         }
+        if (mParamEntity.getTitleStyle() != 0) {
+            mToolbar.setTitleTextAppearance(this, mParamEntity.getTitleStyle());
+        }
         if (mParamEntity.getTitleColor() != null) {
             mToolbar.setTitleTextColor(Color.parseColor(mParamEntity.getTitleColor())); //设置标题颜色
         }
         if (mParamEntity.getBackgroundColor() != null) {
             mToolbar.setBackgroundColor(Color.parseColor(mParamEntity.getBackgroundColor()));
         }
-        switch (mParamEntity.getBackIcon()) {
-            case Constant.BACKICON_STYLEONE:
-                mToolbar.setNavigationIcon(R.mipmap.backincostyleone);
-                break;
-            case Constant.BACKICON_STYLETWO:
-                mToolbar.setNavigationIcon(R.mipmap.backincostyletwo);
-                break;
-            case Constant.BACKICON_STYLETHREE:
-                //默认风格
-                break;
-        }
+//        switch (mParamEntity.getBackIcon()) {
+//            case Constant.BACKICON_STYLEONE:
+//                mToolbar.setNavigationIcon(R.mipmap.lfile_back1);
+//                break;
+//            case Constant.BACKICON_STYLETWO:
+//                mToolbar.setNavigationIcon(R.mipmap.lfile_back2);
+//                break;
+//            case Constant.BACKICON_STYLETHREE:
+//                //默认风格
+//                break;
+//        }
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +119,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         }
         if (!mParamEntity.isChooseMode()) {
             mBtnAddBook.setVisibility(View.VISIBLE);
-            mBtnAddBook.setText(getString(R.string.OK));
+            mBtnAddBook.setText(getString(R.string.lfile_OK));
             //文件夹模式默认为单选模式
             mParamEntity.setMutilyMode(false);
         }
@@ -141,7 +143,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                 mPathAdapter.updateAllSelelcted(false);
                 mIsAllSelected = false;
                 updateMenuTitle();
-                mBtnAddBook.setText(getString(R.string.Selected));
+                mBtnAddBook.setText(getString(R.string.lfile_Selected));
                 mRecylerView.scrollToPosition(0);
                 setShowPath(mPath);
                 //清除添加集合中数据
@@ -149,7 +151,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                 if (mParamEntity.getAddText() != null) {
                     mBtnAddBook.setText(mParamEntity.getAddText());
                 } else {
-                    mBtnAddBook.setText(R.string.Selected);
+                    mBtnAddBook.setText(R.string.lfile_Selected);
                 }
             }
         });
@@ -163,7 +165,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                         mPathAdapter.updateAllSelelcted(false);
                         mIsAllSelected = false;
                         updateMenuTitle();
-                        mBtnAddBook.setText(getString(R.string.Selected));
+                        mBtnAddBook.setText(getString(R.string.lfile_Selected));
                     } else {
                         //如果已经选择则取消，否则添加进来
                         if (mListNumbers.contains(mListFiles.get(position).getAbsolutePath())) {
@@ -174,11 +176,11 @@ public class LFilePickerActivity extends AppCompatActivity {
                         if (mParamEntity.getAddText() != null) {
                             mBtnAddBook.setText(mParamEntity.getAddText() + "( " + mListNumbers.size() + " )");
                         } else {
-                            mBtnAddBook.setText(getString(R.string.Selected) + "( " + mListNumbers.size() + " )");
+                            mBtnAddBook.setText(getString(R.string.lfile_Selected) + "( " + mListNumbers.size() + " )");
                         }
                         //先判断是否达到最大数量，如果数量达到上限提示，否则继续添加
                         if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
-                            Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LFilePickerActivity.this, R.string.lfile_OutSize, Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -193,7 +195,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                         mListNumbers.add(mListFiles.get(position).getAbsolutePath());
                         chooseDone();
                     } else {
-                        Toast.makeText(LFilePickerActivity.this, R.string.ChooseTip, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LFilePickerActivity.this, R.string.lfile_ChooseTip, Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -206,7 +208,7 @@ public class LFilePickerActivity extends AppCompatActivity {
                 if (mParamEntity.isChooseMode() && mListNumbers.size() < 1) {
                     String info = mParamEntity.getNotFoundFiles();
                     if (TextUtils.isEmpty(info)) {
-                        Toast.makeText(LFilePickerActivity.this, R.string.NotFoundBooks, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LFilePickerActivity.this, R.string.lfile_NotFoundBooks, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(LFilePickerActivity.this, info, Toast.LENGTH_SHORT).show();
                     }
@@ -241,7 +243,7 @@ public class LFilePickerActivity extends AppCompatActivity {
         //判断是否数量符合要求
         if (mParamEntity.isChooseMode()) {
             if (mParamEntity.getMaxNum() > 0 && mListNumbers.size() > mParamEntity.getMaxNum()) {
-                Toast.makeText(LFilePickerActivity.this, R.string.OutSize, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LFilePickerActivity.this, R.string.lfile_OutSize, Toast.LENGTH_SHORT).show();
                 return;
             }
         }
@@ -315,12 +317,12 @@ public class LFilePickerActivity extends AppCompatActivity {
                     if (mParamEntity.getAddText() != null) {
                         mBtnAddBook.setText(mParamEntity.getAddText() + "( " + mListNumbers.size() + " )");
                     } else {
-                        mBtnAddBook.setText(getString(R.string.Selected) + "( " + mListNumbers.size() + " )");
+                        mBtnAddBook.setText(getString(R.string.lfile_Selected) + "( " + mListNumbers.size() + " )");
                     }
                 }
             } else {
                 mListNumbers.clear();
-                mBtnAddBook.setText(getString(R.string.Selected));
+                mBtnAddBook.setText(getString(R.string.lfile_Selected));
             }
             updateMenuTitle();
         }
@@ -333,9 +335,9 @@ public class LFilePickerActivity extends AppCompatActivity {
     public void updateMenuTitle() {
 
         if (mIsAllSelected) {
-            mMenu.getItem(0).setTitle(getString(R.string.Cancel));
+            mMenu.getItem(0).setTitle(getString(R.string.lfile_Cancel));
         } else {
-            mMenu.getItem(0).setTitle(getString(R.string.SelectAll));
+            mMenu.getItem(0).setTitle(getString(R.string.lfile_SelectAll));
         }
     }
 
