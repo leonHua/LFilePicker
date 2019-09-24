@@ -103,15 +103,14 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 #### Provide style
 
  **withIconStyle(int style)** Value model：
- 
- - Constant.BACKICON_STYLEONE
- - Constant.BACKICON_STYLETWO
- - Constant.BACKICON_STYLETHREE
- 
- **withBackIcon(int backStyle)** Value model：
  - Constant.ICON_STYLE_YELLOW
  - Constant.ICON_STYLE_BLUE
  - Constant.ICON_STYLE_GREEN
+ 
+ **withBackIcon(int backStyle)** Value model：
+ - Constant.BACKICON_STYLEONE
+ - Constant.BACKICON_STYLETWO
+ - Constant.BACKICON_STYLETHREE
  
   **withFileFilter(String[] arrs)** Value model：
 
