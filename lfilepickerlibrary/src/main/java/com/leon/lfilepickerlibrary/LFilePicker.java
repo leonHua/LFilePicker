@@ -82,7 +82,7 @@ public class LFilePicker {
     }
 
     /**
-     * 设置辩题颜色
+     * 设置标题颜色
      *
      * @param color
      * @return
