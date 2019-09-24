@@ -1,7 +1,13 @@
 package com.leon.filepicker.activity;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,9 +18,11 @@ import com.leon.filepicker.R;
 import com.leon.lfilepickerlibrary.LFilePicker;
 import com.leon.lfilepickerlibrary.utils.Constant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int CODE_PERMISSIONS = 1;
     private final String TAG = "FilePickerLeon";
     private RadioGroup mRgIconType;
     private RadioGroup mRgBackArrawType;
@@ -26,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_PERMISSIONS);
+        }
         initView();
         initListener();
     }
@@ -105,6 +116,33 @@ public class MainActivity extends AppCompatActivity {
                 String path = data.getStringExtra("path");
                 Toast.makeText(getApplicationContext(), "选中的路径为" + path, Toast.LENGTH_SHORT).show();
                 Log.i("LeonFilePicker", path);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CODE_PERMISSIONS && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                    list.add(permissions[i]);
+                }
+            }
+            int length = list.size();
+            if (length != 0) {
+                final String[] array = new String[length];
+                list.toArray(array);
+                new AlertDialog.Builder(this)
+                        .setMessage("为了正常使用软件，必须允许这些权限!")
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                requestPermissions(array, CODE_PERMISSIONS);
+                            }
+                        })
+                        .show();
             }
         }
     }
