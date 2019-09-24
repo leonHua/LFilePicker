@@ -144,7 +144,6 @@ public class LFilePicker {
      * @return
      */
     public LFilePicker withBackIcon(int backStyle) {
-        this.mBackStyle = 0;//默认样式
         this.mBackStyle = backStyle;
         return this;
     }

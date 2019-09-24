@@ -94,17 +94,17 @@ public class LFilePickerActivity extends AppCompatActivity {
         if (mParamEntity.getBackgroundColor() != null) {
             mToolbar.setBackgroundColor(Color.parseColor(mParamEntity.getBackgroundColor()));
         }
-//        switch (mParamEntity.getBackIcon()) {
-//            case Constant.BACKICON_STYLEONE:
-//                mToolbar.setNavigationIcon(R.mipmap.lfile_back1);
-//                break;
-//            case Constant.BACKICON_STYLETWO:
-//                mToolbar.setNavigationIcon(R.mipmap.lfile_back2);
-//                break;
-//            case Constant.BACKICON_STYLETHREE:
-//                //默认风格
-//                break;
-//        }
+        switch (mParamEntity.getBackIcon()) {
+            case Constant.BACKICON_STYLEONE:
+                mToolbar.setNavigationIcon(R.mipmap.lfile_back1);
+                break;
+            case Constant.BACKICON_STYLETWO:
+                mToolbar.setNavigationIcon(R.mipmap.lfile_back2);
+                break;
+            case Constant.BACKICON_STYLETHREE:
+                //默认风格
+                break;
+        }
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
