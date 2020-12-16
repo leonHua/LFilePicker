@@ -82,7 +82,7 @@ public class LFilePicker {
     }
 
     /**
-     * 设置辩题颜色
+     * 设置标题颜色
      *
      * @param color
      * @return
@@ -144,7 +144,6 @@ public class LFilePicker {
      * @return
      */
     public LFilePicker withBackIcon(int backStyle) {
-        this.mBackStyle = 0;//默认样式
         this.mBackStyle = backStyle;
         return this;
     }

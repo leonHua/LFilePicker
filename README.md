@@ -31,15 +31,15 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 #### dynamic effect（If the picture can't display properly, you can view the screenshot GIF files in the folder）
 ![](screenshot/操作.gif)
 #### the page：
-![][5]
-![][6]
-![][7]
-![][8]
-![][9]
-![][10]
-![][11]
-![][12]
-![][13]
+<img width="360px" src="screenshot/Screenshot_20170330-132717.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-133458.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-133811.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-133831.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-133836.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-133844.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-134316.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-134327.png"/>
+<img width="360px" src="screenshot/Screenshot_20170330-134333.png"/>
 
 ### Quick to use
 #### 1. add reference
@@ -103,15 +103,14 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 #### Provide style
 
  **withIconStyle(int style)** Value model：
- 
- - Constant.BACKICON_STYLEONE
- - Constant.BACKICON_STYLETWO
- - Constant.BACKICON_STYLETHREE
- 
- **withBackIcon(int backStyle)** Value model：
  - Constant.ICON_STYLE_YELLOW
  - Constant.ICON_STYLE_BLUE
  - Constant.ICON_STYLE_GREEN
+ 
+ **withBackIcon(int backStyle)** Value model：
+ - Constant.BACKICON_STYLEONE
+ - Constant.BACKICON_STYLETWO
+ - Constant.BACKICON_STYLETHREE
  
   **withFileFilter(String[] arrs)** Value model：
 
@@ -120,13 +119,13 @@ This is a lightweight file selector, it can select files by retrieve phone direc
 ### More detailed usage：[简书：LFilePicker---文件选择利器，各种样式有它就够了](http://www.jianshu.com/p/eeb211e190be)
  
 ### Thanks
- - [AndroidUtilCode][2]
- - [MaterialFilePicker][3]
+ - [AndroidUtilCode][1]
+ - [MaterialFilePicker][2]
 
 
 ----------
 If the library is useful to you, welcome to star or fork!
-Welcome to visit [blog] [4] for more articles.
+Welcome to visit [blog] [3] for more articles.
 
 ## License
 
@@ -144,19 +143,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-132717.png?imageView2/0/w/500/h/1200/q/100
-  [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133458.png?imageView2/0/w/500/h/1200/q/100
-  [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133811.png?imageView2/0/w/500/h/1200/q/100
-  [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133831.png?imageView2/0/w/500/h/1200/q/100
-  [9]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133836.png?imageView2/0/w/500/h/1200/q/100
-  [10]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-133844.png?imageView2/0/w/500/h/1200/q/100
-  [11]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-134316.png?imageView2/0/w/500/h/1200/q/100
-  [12]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-134327.png?imageView2/0/w/500/h/1200/q/100
-  [13]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/Screenshot_20170330-134333.png?imageView2/0/w/500/h/1200/q/100
-  [14]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C01.gif?imageView2/0/w/700/h/1400/q/100
-  [15]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C02.gif?imageView2/0/w/700/h/1400/q/100
-  [16]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C03.gif?imageView2/0/w/700/h/1400/q/100
-  [17]: http://o9w936rbz.bkt.clouddn.com/github/img/LFilePicker/%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C04.gif?imageView2/0/w/700/h/1400/q/100
-  [2]: https://github.com/Blankj/AndroidUtilCode
-  [3]: https://github.com/nbsp-team/MaterialFilePicker
-  [4]: https://leonhua.github.io/
+  [1]: https://github.com/Blankj/AndroidUtilCode
+  [2]: https://github.com/nbsp-team/MaterialFilePicker
+  [3]: https://leonhua.github.io/

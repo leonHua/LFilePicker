@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="lfile_NotFoundBooks">请选择导入的图书</string>
+    <string name="lfile_NotFoundBooks">请至少选择一个</string>
     <string name="lfile_NotFoundPath">SD 存储卡状态不可用</string>
     <string name="lfile_UpOneLevel">上一级</string>
     <string name="lfile_Selected">选中</string>
