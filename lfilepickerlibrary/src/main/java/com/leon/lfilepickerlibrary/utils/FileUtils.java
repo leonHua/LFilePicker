@@ -70,22 +70,19 @@ public class FileUtils {
      */
     public static List<File> getFileList(String path, FileFilter filter, boolean isGreater, long targetSize) {
         List<File> list = FileUtils.getFileListByDirPath(path, filter);
-        //进行过滤文件大小
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()) {
-            File f = (File) iterator.next();
+        for (int i = 0; i < list.size(); i++) {
+            File f = list.get(i);
             if (f.isFile()) {
-                //获取当前文件大小
                 long size = FileUtils.getFileLength(f);
                 if (isGreater) {
-                    //当前想要留下大于指定大小的文件，所以过滤掉小于指定大小的文件
                     if (size < targetSize) {
-                        iterator.remove();
+                        list.remove(i);
+                        i--; // 删除后我们调整索引
                     }
                 } else {
-                    //当前想要留下小于指定大小的文件，所以过滤掉大于指定大小的文件
                     if (size > targetSize) {
-                        iterator.remove();
+                        list.remove(i);
+                        i--; // 删除后我们调整索引
                     }
                 }
             }
